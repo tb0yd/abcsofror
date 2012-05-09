@@ -1,0 +1,923 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="blueprint/screen.css" >
+		<link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+		<style>
+			body {
+				background: url(tile.png);
+				background-position: 0px 50%;
+			}
+			h5 {
+				font-size: 24px;
+				font-family: 'Economica', sans-serif;
+				color: #333;
+			}
+			p {
+				font-size: 14px;
+				font-family: 'Verdana', sans-serif;
+			}
+			.container { 
+				background: url(grad2.png);
+				font-family: 'Economica', sans-serif;
+				padding-bottom: 16px;
+			}
+			h1 {
+				font-size: 96px;
+				margin: 48px 0 0 48px;
+				border-bottom: 4px solid #444;
+				color: #444;
+			}
+			h2 {
+				font-size: 48px;
+				color: #444;
+				margin-bottom: 0px;
+			}
+			h6 {
+				font-size: 14px;
+				text-transform: uppercase;
+				font-family: 'Verdana', sans-serif;
+				color: #888;
+				margin-bottom: 10px;
+				width: 800px;
+			}
+			h3 {
+				font-family: 'Arial', sans-serif;
+				font-size: 16px;
+				letter-spacing:5px;
+				text-align: right;
+				margin: 16px 0 0 48px;
+				color: #777;
+			}
+			table.table-art tbody tr:nth-child(even) td, table.table-art tbody tr.even td {background:transparent;}
+			.table-art tr {
+				line-height: 9px;
+			}
+			hr {background:#ddd;color:#ddd;clear:both;float:none;width:96%;height:1px;margin:0;border:none;}
+		</style>
+		<title>The ABCs of RoR</title>
+		<link rel="shortcut icon" href="favicon.ico" />
+
+		<script type="text/javascript">
+			$(function() {
+				var scrollingBg = function() {
+					$("body").css("background-position", "0px 50%");
+					$("body").animate({ backgroundPosition: "+=39" }, 5000, "linear");
+				};
+				window.setInterval(scrollingBg, 5000);
+				scrollingBg();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="span-15 append-1 first">
+				<h1>THE ABCS OF ROR</h1>
+				<h3>------------------------ Ruby on Rails Explained</h3>
+			</div>
+			<div class="span-8 last">
+				<table class="table-art" style='width: 300px; border-collapse: collapse;'>
+					<tbody>
+					<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 128, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(89, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 128, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 128, 85); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 0, 254); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(199, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(125, 125, 255); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(171, 171, 255); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(171, 171, 255); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(125, 125, 255); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 0, 254); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 128, 85); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 128, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 128, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td style="background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 0, 0); background-position: initial initial; background-repeat: initial initial; ">
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="grid-24">
+				<hr class="space" />
+				<div class="grid-18 prepend-1 text">
+					<br />
+					<br />
+					<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
+
+					<hr />
+
+					<h2>A is for ActiveRecord</h2>
+
+					<h6>Get an overview of the ORM framework that makes Rails Rails.</h6>
+
+					<hr />
+
+					<h2>B is for browsers</h2>
+
+					<h6>Every user's window to your work</h6>
+
+					<hr />
+
+					<h2>C is for cross-site request forgery</h2>
+
+					<h6>It's 2AM. Do you know where your cookies are?</h6>
+
+					<hr />
+					<h2>D is for databases</h2>
+
+					<h6>Conventional or unconventional</h6>
+
+					<hr />
+
+					<h2>E is for ERb</h2>
+
+					<h6>Ruby embedded in HTML</h6>
+
+					<hr />
+
+					<h2>F is for functional programming</h2>
+
+					<h6>After reading this, you'll never use a for-loop again.</h6>
+
+					<hr />
+
+					<h2>G is for gems</h2>
+
+					<h6>Yes, in Ruby, the main format for packaging software is the "gem". Seriously.</h6>
+
+					<hr />
+
+					<h2>H is for HTTP</h2>
+
+					<h6>You may have thought you knew HTTP, but you didn't know it like <em>this</em>.</h6>
+
+					<hr />
+
+					<h2>I is for IRb</h2>
+
+					<h6>Meet your new best friend for debugging purposes.</h6>
+
+					<hr />
+
+					<h2>J is for Javascript</h2>
+
+					<h6>Many dense books have been written on it; why not a few more paragraphs?</h6>
+
+					<hr />
+
+					<h2>K is for Kernel</h2>
+
+					<h6>This Ruby module will open up a whole new world of possibilities.</h6>
+
+					<hr />
+
+					<h2>L is for LAMP</h2>
+
+					<h6>Here, it should really be "LAMR," but for some reason that hasn't caught on.</h6>
+
+					<hr />
+
+					<h2>M is for Model-View-Controller</h2>
+
+					<h6>A single design pattern that fits 99% of domains, whether you like it or not.</h6>
+
+					<hr />
+
+					<h2>N is for nested forms</h2>
+
+					<h6>Read this now and save yourself years of writing complex forms the wrong way.</h6>
+
+					<hr />
+
+					<h2>O is for object-oriented programming</h2>
+
+					<h6>Every class is an object, but not every object is a class, but "Object" is a class and "class" is not an object.</h6>
+
+					<hr />
+
+					<h2>P is for performance</h2>
+
+					<hr />
+
+					<h2>Q is for quality assurance</h2>
+
+					<h6>Your best friend is the one who corrects you when you make a mistake.</h6>
+
+					<hr />
+
+					<h2>R is for refactoring</h2>
+
+					<h6>If code is your home, refactoring is spring cleaning. Just don't go behind the couch.</h6>
+
+					<hr />
+
+					<h2>S is for source control</h2>
+
+					<h6>Sometimes it's the only documentation you need.</h6>
+
+					<hr />
+
+					<h2>T is for text editor</h2>
+
+					<h6>Learning a good one can double your productivity.</h6>
+
+					<hr />
+
+					<h2>U is for unit tests</h2>
+
+					<h6>Write them before you code, or write them afterwards. Write them.</h6>
+
+					<hr />
+
+					<h2>V is for validation</h2>
+
+					<h6>ActiveRecord makes it easy to be as nitpicky about your data as you want.</h6>
+
+					<hr />
+
+					<h2>X is for XML</h2>
+
+					<h6>It's bulky, it's confusing, and it's everywhere. Here's how to use it in Rails.</h6>
+
+					<hr />
+
+					<h2>Y is for YAML</h2>
+
+					<h6>Learn the format of the Rails configuration files.</h6>
+
+					<hr />
+
+					<h2>Z is for zero</h2>
+
+					<h6>It's the number of things related to Rails that start with Z. <strong>Congratulations, you're done!</strong></h6>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
