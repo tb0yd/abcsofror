@@ -8,6 +8,22 @@
 				background: url(tile.png);
 				background-position: 0px 50%;
 			}
+			ul {
+				font-size: 14px;
+				font-family: 'Arial', sans-serif;
+				padding: 6px 0 6px 26px;
+			}
+			h4 {
+				font-size: 36px;
+				font-family: 'Economica', sans-serif;
+				color: #555;
+				border-bottom: 1px solid #555;
+				border-right: 1px solid #555;
+				display: inline-block;
+				margin-top: 24px;
+				margin-bottom: 16px;
+				padding: 0 8px 8px 0;
+			}
 			h5 {
 				font-size: 24px;
 				font-family: 'Economica', sans-serif;
@@ -16,6 +32,7 @@
 			p {
 				font-size: 14px;
 				font-family: 'Verdana', sans-serif;
+				text-indent: 16px;
 			}
 			.container { 
 				background: url(grad2.png);
@@ -54,6 +71,11 @@
 				line-height: 9px;
 			}
 			hr {background:#ddd;color:#ddd;clear:both;float:none;width:96%;height:1px;margin:0;border:none;}
+			pre { border: 1px solid #ddd; padding: 10px; }
+			.sep {
+				text-transform: uppercase; font-family: "Economica", sans-serif; font-size: 20px;
+				color: #145; font-weight: bold;
+			}
 		</style>
 		<title>The ABCs of RoR</title>
 		<link rel="shortcut icon" href="favicon.ico" />
@@ -763,14 +785,13 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="grid-24">
+			<div class="prepend-1 span-22">
 				<hr class="space" />
-				<div class="grid-18 prepend-1 text">
-					<br />
-					<br />
-					<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
+				<br />
+				<br />
+				<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
 
-					<hr />
+									<hr />
 
 					<h2>A is for ActiveRecord</h2>
 
@@ -916,7 +937,11 @@
 					<h2>Z is for zero</h2>
 
 					<h6>It's the number of things related to Rails that start with Z. <strong>Congratulations, you're done!</strong></h6>
-				</div>
+
+					<hr />
+
+				<hr class="space" />
+				<div class="span-4 append-1 last right sep">Made by Tyler Boyd</div>
 			</div>
 		</div>
 	</body>
