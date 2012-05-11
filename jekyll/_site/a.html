@@ -105,6 +105,15 @@
 		</style>
 		<title>The ABCs of RoR: A is for ActiveRecord</title>
 		<link rel="shortcut icon" href="favicon.ico" />
+		<script>
+			$(function() {
+				$(".signature").hover(function(evt) {
+					$(evt.target).html("tboyd 47 (at) gmail dot com");
+				}, function(evt) {
+					$(evt.target).html("tyler boyd");
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div class="container">
@@ -962,8 +971,8 @@
 
 <p>Perhaps now you see why developers are drawn to Ruby on Rails. Once you&#8217;ve written a few lines of setup code, you already have a large vocabulary of methods for manipulating your data.</p>
 
-				<hr class="space" />
-				<div class="span-4 append-1 last right sep">Made by Tyler Boyd</div>
+				<br /><br />
+				<div class="span-10 append-1 last right sep" style="text-align:right;">Made by <span class="signature">Tyler Boyd</span></div>
 			</div>
 		</div>
 	</body>
