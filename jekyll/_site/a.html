@@ -5,7 +5,7 @@
 		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 		<style>
 			body {
-				background: url(tile.png);
+				background: url(tile.gif);
 				background-position: 0px 50%;
 			}
 			ul {
@@ -94,17 +94,6 @@
 		</style>
 		<title>The ABCs of RoR</title>
 		<link rel="shortcut icon" href="favicon.ico" />
-
-		<script type="text/javascript">
-			$(function() {
-				var scrollingBg = function() {
-					$("body").css("background-position", "0px 50%");
-					$("body").animate({ backgroundPosition: "+=39" }, 5000, "linear");
-				};
-				window.setInterval(scrollingBg, 5000);
-				scrollingBg();
-			});
-		</script>
 	</head>
 	<body>
 		<div class="container">
