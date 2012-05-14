@@ -103,7 +103,7 @@
 				background: transparent;
 			}
 		</style>
-		<title>The ABCs of RoR: A simple introduction to using Rails</title>
+		<title>The ABCs of RoR: B is for browsers</title>
 		<link rel="shortcut icon" href="favicon.ico" />
 		<script>
 			$(function() {
@@ -816,206 +816,94 @@
 				<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
 
 				<hr />
-<div class="selection">
-	<a href="a.html">
-	<h2>A is for ActiveRecord</h2>
-
-	<h6>Get an overview of the ORM framework that makes Rails Rails.</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="b.html">
-
+<div class="letter">
 	<h2>B is for browsers</h2>
-
-	<h6>Every user's window to your work</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-
-	<h2>C is for cross-site request forgery</h2>
-
-	<h6>It's 2AM. Do you know where your cookies are?</h6>
-</div>
-
-<hr />
-<div class="selection">
-	<h2>D is for databases</h2>
-
-	<h6>Conventional or unconventional</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>E is for ERb</h2>
-
-	<h6>Ruby embedded in HTML</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>F is for functional programming</h2>
-
-	<h6>After reading this, you'll never use a for-loop again.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>G is for gems</h2>
-
-	<h6>Yes, in Ruby, the main format for packaging software is the "gem". Seriously.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>H is for HTTP</h2>
-
-	<h6>The basis of all web transactions</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>I is for IRb</h2>
-
-	<h6>Meet your new best friend for debugging purposes.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>J is for Javascript</h2>
-
-	<h6>Many dense books have been written on it; why not a few more paragraphs?</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>K is for Kernel</h2>
-
-	<h6>This Ruby module will open up a whole new world of possibilities.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>L is for LAMP</h2>
-
-	<h6>Here, it should really be "LAMR," but for some reason that hasn't caught on.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>M is for Model-View-Controller</h2>
-
-	<h6>A single design pattern that fits 99% of domains, whether you like it or not.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>N is for nested forms</h2>
-
-	<h6>Read this now and save yourself years of writing complex forms the wrong way.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>O is for object-oriented programming</h2>
-
-	<h6>Every class is an object, but not every object is a class, but "Object" is a class and "class" is not an object.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>P is for performance</h2>
-	<h6>Clearing N+1s and feeling like a hero</h6>
+	<h6>Every user's window to your work</h2>
 </div>
 <hr />
+<h4 id='what_web_browsers_do'>What web browsers do</h4>
 
-<div class="selection">
-	<h2>Q is for quality assurance</h2>
+<p>A web browser does much more than browse the web. For example, it has to:</p>
 
-	<h6>Your best friend is the one who corrects you when you make a mistake.</h6>
+<ul>
+<li>follow redirects</li>
 
-</div>
+<li>encode form data to HTTP</li>
+
+<li>send and receive cookie data</li>
+
+<li>fetch asset files</li>
+
+<li>apply CSS to the page</li>
+
+<li>execute Javascript included in the page</li>
+
+<li>send and receive data via AJAX</li>
+</ul>
+
+<p>Rails provides several tools to help you make use of these widely-accepted browser features. I am going to cover the first three.</p>
+
+<h4 id='redirects'>Redirects</h4>
+
+<p>The most basic example is setting up redirects for the browser to follow.</p>
+
+<pre><code>redirect_to &quot;/my/target_page.html&quot;</code></pre>
+
+<p>Including this line will make the browser cancel the current page and load your target page instead. This is useful when you want to prevent users from accessing certain pages unless they are logged in.</p>
+
+<pre><code>unless current_user.present?
+  redirect_to &quot;/my/login_page.html&quot;
+end</code></pre>
+
+<h4 id='form_data'>Form data</h4>
+
+<p>When a user fills in a web form on your site and presses &#8220;Submit&#8221;, Rails gathers this information in the <em>params</em> object. For example, if you are setting up a comment form on a blog, you might read the params like this:</p>
+
+<pre><code>comment_params = params[:comment]</code></pre>
+
+<p>It&#8217;s the same whether you use a Ruby symbol or a quoted string:</p>
+
+<pre><code>comment_params = params[&quot;comment&quot;] # This is the same as the previous line.</code></pre>
+
+<p>Then, if you&#8217;re using <a href='/A'>ActiveRecord</a>, you can use the <em>new</em> and <em>save</em> methods to write this to the database:</p>
+
+<pre><code>new_comment = Comment.new(comment_params)
+new_comment.save</code></pre>
+
+<p>It&#8217;s that simple!</p>
+
+<h4 id='cookies'>Cookies</h4>
+
+<p>Rails also provides a way to access cookies. It&#8217;s pretty obvious:</p>
+
+<pre><code>cookies[:user_name] = &quot;tboyd&quot;</code></pre>
+
+<p>Cookies can be used in many ways to enhance the user experience. One common use for a cookie is to provide a shopping cart feature. The following shopping cart will be cleared in 1 year:</p>
+
+<pre><code>cookies[:shopping_cart] = { :value =&gt; &quot;1 frisbee&quot;, :expires =&gt; 1.year.from_now }</code></pre>
+
+<h4 id='looking_to_the_future'>Looking to the future</h4>
+
+<p>New browser features are being introduced to the web all the time. I have only covered some of the most widely-accepted ones, but there are already dozens of others to consider. A great resource to track new browser features is <a href='http://www.caniuse.com'>CanIUse.com</a>.</p>
+
 <hr />
+<br />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'abcsofror'; // required: replace example with your forum shortname
+    var disqus_identifier = '/a';
+    var disqus_url = 'http://www.abcsofror.com/a.html';
 
-<div class="selection">
-	<h2>R is for Ruby</h2>
-
-	<h6>Making programmers happy since 1993</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>S is for source control</h2>
-
-	<h6>Sometimes it's the only documentation you need.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>T is for text editor</h2>
-
-	<h6>Learning a good one can double your productivity.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>U is for unit tests</h2>
-
-	<h6>Write them before you code, or write them afterwards. Write them.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>V is for validation</h2>
-
-	<h6>ActiveRecord makes it easy to be as nitpicky about your data as you want.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>X is for XML</h2>
-
-	<h6>It's bulky, it's confusing, and it's everywhere. Here's how to use it in Rails.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Y is for YAML</h2>
-
-	<h6>Learn the format of the Rails configuration files.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Z is for zero</h2>
-
-	<h6>It's the number of things related to Rails that start with Z. <strong>Congratulations, you're done!</strong></h6>
-
-</div>
-<hr />
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 				<br /><br />
 				<div class="span-10 append-1 last right sep" style="text-align:right;">Made by <span class="signature">Tyler Boyd</span></div>
