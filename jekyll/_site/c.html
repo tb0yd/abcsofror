@@ -103,7 +103,7 @@
 				background: transparent;
 			}
 		</style>
-		<title>The ABCs of RoR: A is for ActiveRecord</title>
+		<title>The ABCs of RoR: C is for cross-site request forgery</title>
 		<link rel="shortcut icon" href="favicon.ico" />
 		<script>
 			$(function() {
@@ -817,159 +817,67 @@
 
 				<hr />
 <div class="letter">
-	<h2>A is for ActiveRecord</h2>
-	<h6>Get an overview of the ORM framework that makes Rails Rails.</h2>
+	<h2>C is for cross-site request forgery</h2>
+	<h6>It's 2AM. Do you know where your cookies are?</h2>
 </div>
 <hr />
-<h4 id='how_to_create_a_blog_in_15_steps'>How to create a blog in 15 steps</h4>
+<h4 id='what_csrf_is'>What CSRF is</h4>
 
-<p>My introduction to Rails in 2008 was by way of a forum post called <a href='http://railsforum.com/viewtopic.php?id=17671'>&#8220;HowTo Create a Rails Blog in 15 steps without nested resources + AJAX.&#8221;</a> The author&#8217;s tutorial is now outdated, but the part on ActiveRecord is still relevant.</p>
+<p>Cross-site request forgery (CSRF) is when a victim is tricked into sending a malicious HTTP request from his own computer.</p>
 
-<p>In step 9 of his tutorial, the author presents the following code snippets:</p>
-<div class='highlight'><pre><code class='ruby'>    <span class='k'>class</span> <span class='nc'>Post</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Base</span>
-      <span class='n'>has_many</span> <span class='ss'>:comments</span>
-    <span class='k'>end</span>
+<p>It&#8217;s easier than it sounds. Say a person logs into Doofusbank.com. Then he clicks a link from a suspicious email, which loads a page on Evilwebsite.com, which sends a funds transfer request to Doofusbank.com. Since he&#8217;s logged in, there&#8217;s a risk that Doofusbank.com might accept this forged request, unless they have protection against CSRF.</p>
+
+<h4 id='csrf_protection_in_rails'>CSRF protection in Rails</h4>
+
+<p>CSRF is a common and well-known problem for web applications. Rails&#8217; CSRF protection is activated by placing this code in the controller:</p>
+<div class='highlight'><pre><code class='ruby'>     <span class='n'>protect_from_forgery</span>
 </code></pre>
 </div>
-<p>&#8230;and&#8230;</p>
-<div class='highlight'><pre><code class='ruby'>    <span class='k'>class</span> <span class='nc'>Comment</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Base</span>
-      <span class='n'>belongs_to</span> <span class='ss'>:post</span>
-    <span class='k'>end</span>
+<p>There are three things that go into Rails&#8217; CSRF protection:</p>
+
+<ol>
+<li>The hidden &#8220;authenticity_token&#8221; field</li>
+
+<li>The &#8220;X-CSRF-Token&#8221; HTTP header</li>
+
+<li>The token value in the session</li>
+</ol>
+
+<h4 id='the_hidden_authenticity_token_field'>The hidden &#8220;authenticity_token&#8221; field</h4>
+
+<p>The first factor to consider is a hidden form field that Rails includes in the <a href='http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-form_for'>form_for</a> helper:</p>
+<div class='highlight'><pre><code class='ruby'>      <span class='o'>&lt;</span><span class='n'>input</span> <span class='nb'>name</span><span class='o'>=</span><span class='s2'>&quot;authenticity_token&quot;</span> <span class='n'>type</span><span class='o'>=</span><span class='s2'>&quot;hidden&quot;</span> <span class='n'>value</span><span class='o'>=</span><span class='s2'>&quot;l/jRTWlC4lhJg6355yj/Kqqb8u6fdHfN1ufDU+KU1I8=&quot;</span> <span class='sr'>/&gt;</span>
 </code></pre>
 </div>
-<p>These 6 lines of code do a whole lot of nifty things. Let&#8217;s look at them line by line.</p>
+<p>This hidden field only appears for POST requests &#8211; GET requests are not protected from CSRF.</p>
 
-<h4 id='inheriting_from_activerecordbase'>Inheriting from ActiveRecord::Base</h4>
+<h4 id='the_xcsrftoken_http_header'>The &#8220;X-CSRF-Token&#8221; HTTP header</h4>
 
-<p>The first line defines a <em>Post</em> class and its relationship to the <em>ActiveRecord::Base</em> class. <em>Post</em> <a href='/O'>inherits</a> from <em>ActiveRecord::Base</em>.</p>
+<p>Rails can be configured to send the authenticity token in the header of every AJAX call as well. If so, the headers of your AJAX calls should contain a line that looks like this:</p>
 
-<p>So what does Post inherit from ActiveRecord? A whole lot of methods. From them:</p>
+<pre><code>  X-CSRF-Token: l/jRTWlC4lhJg6355yj/Kqqb8u6fdHfN1ufDU+KU1I8=</code></pre>
 
-<ul>
-<li>Post.create</li>
+<h4 id='the_session'>The session</h4>
 
-<li>Post.find</li>
+<p>Whether the token comes from the hidden field or the header, it has to match the token in the user&#8217;s <em>session</em> in order to pass CSRF protection.</p>
 
-<li>Post.new</li>
+<p>By default, Rails stores the session in a cookie. This is the fastest option, but due to the lack of encryption, it&#8217;s also the least secure. If you need more security, Rails can be configured to encrypt the cookie. For even more security, you can skip the cookie altogether and store the session in the database.</p>
 
-<li>Post.all</li>
+<h4 id='study_questions'>Study Questions</h4>
 
-<li>Post.first</li>
+<ol>
+<li>What are the three factors in Rails CSRF?</li>
 
-<li>Post.last</li>
+<li>Using the fastest and least secure configuration, which of the three factors are stored on the client?</li>
 
-<li>Post.destroy_all</li>
-</ul>
+<li>Describe the response of a Rails server when a client submits an invalid CSRF token.</li>
 
-<p>ActiveRecord is designed to save Posts in the &#8220;posts&#8221; table in your <a href='/D'>database</a> by inferring the name of the table from the name of the class.</p>
+<li>Explain why GET requests are not protected from CSRF.</li>
 
-<h4 id='attribute_methods'>Attribute methods</h4>
+<li>CSRF is only one attack vector on the internet. Identify at least one other attack vector and how it&#8217;s different from CSRF.</li>
 
-<p>ActiveRecord finds out the attributes of a Post by reading the &#8220;posts&#8221; table, and then gives you many more methods related to these attributes.</p>
-
-<p>In this example, a Post can have a title and a body. So, you can use the following methods to write to a Post:</p>
-
-<ul>
-<li>post.title = &#8221;I&#8217;m learning Rails!&#8221;</li>
-
-<li>post.body = &#8220;Help!&#8221;</li>
-</ul>
-
-<p>&#8230;and the following methods to read a Post:</p>
-
-<ul>
-<li>post.title <br /> =&gt; &#8221;I&#8217;m learning Rails!&#8221;</li>
-
-<li>post.body <br /> =&gt; &#8220;Help!&#8221;</li>
-</ul>
-
-<p>There are many other methods generated by ActiveRecord, such as:</p>
-
-<ul>
-<li>Post.find_by_title(&#8221;I&#8217;m learning Rails!&#8221;)</li>
-
-<li>Post.find_by_body(&#8220;Help!&#8221;)</li>
-
-<li>Post.where(:title =&gt; &#8221;I&#8217;m learning Rails!&#8221;)</li>
-
-<li>Post.where(:body =&gt; &#8220;Help!&#8221;)</li>
-
-<li>post.update_attributes(:title =&gt; &#8221;I&#8217;m still learning Rails!&#8221;)</li>
-
-<li>post.title_changed?</li>
-
-<li>post.body_changed?</li>
-</ul>
-
-<p>Again, all of this is a result of that first line of code:</p>
-<div class='highlight'><pre><code class='ruby'>    <span class='k'>class</span> <span class='nc'>Comment</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Base</span>
-</code></pre>
-</div>
-<h4 id='associations_in_activerecord'>Associations in ActiveRecord</h4>
-
-<p>The next line we come to is:</p>
-<div class='highlight'><pre><code class='ruby'>      <span class='n'>has_many</span> <span class='ss'>:comments</span>
-</code></pre>
-</div>
-<p>Just like the first line, the second line results in a whole lot of new methods being generated. Here&#8217;s the full list (from the <a href='http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html'>official Rails documentation</a>):</p>
-
-<ul>
-<li>post.comments</li>
-
-<li>post.comments =</li>
-
-<li>post.comment_ids</li>
-
-<li>post.comment_ids =</li>
-
-<li>post.comments &#171;</li>
-
-<li>post.comments.push</li>
-
-<li>post.comments.concat</li>
-
-<li>post.comments.build</li>
-
-<li>post.comments.create</li>
-
-<li>post.comments.create!</li>
-
-<li>post.comments.size</li>
-
-<li>post.comments.length</li>
-
-<li>post.comments.count</li>
-
-<li>post.comments.sum</li>
-
-<li>post.comments.empty?</li>
-
-<li>post.comments.clear</li>
-
-<li>post.comments.delete</li>
-
-<li>post.comments.delete_all</li>
-
-<li>post.comments.destroy_all</li>
-
-<li>post.comments.find</li>
-
-<li>post.comments.exists?</li>
-
-<li>post.comments.uniq</li>
-
-<li>post.comments.reset</li>
-</ul>
-
-<h4 id='wrapping_up'>Wrapping up</h4>
-
-<p>The third line of code is:</p>
-<div class='highlight'><pre><code class='ruby'>    <span class='k'>end</span>
-</code></pre>
-</div>
-<p>&#8230;which doesn&#8217;t need any explanation, nor do the next three lines; they&#8217;re similar to the first three.</p>
-
-<p>Perhaps now you see why developers are drawn to Ruby on Rails. Once you&#8217;ve written a few lines of setup code, you already have a large vocabulary of methods for manipulating your data.</p>
+<li>Imagine that your boss reads this and becomes terrified of CSRF. He then asks you to implement CSRF protection on his email client and cell phone. Enlighten him as to why this isn&#8217;t necessary.</li>
+</ol>
 
 <hr />
 <br />
@@ -977,8 +885,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'abcsofror'; // required: replace example with your forum shortname
-    var disqus_identifier = '/' + "a.html";
-    var disqus_url = 'http://www.abcsofror.com/' + "a.html";
+    var disqus_identifier = '/' + "c.html";
+    var disqus_url = 'http://www.abcsofror.com/' + "c.html";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
