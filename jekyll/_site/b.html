@@ -846,42 +846,42 @@
 <h4 id='redirects'>Redirects</h4>
 
 <p>The most basic example is setting up redirects for the browser to follow.</p>
-
-<pre><code>redirect_to &quot;/my/target_page.html&quot;</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='n'>redirect_to</span> <span class='s2'>&quot;/my/target_page.html&quot;</span>
+</code></pre>
+</div>
 <p>Including this line will make the browser cancel the current page and load your target page instead. This is useful when you want to prevent users from accessing certain pages unless they are logged in.</p>
-
-<pre><code>unless current_user.present?
-  redirect_to &quot;/my/login_page.html&quot;
-end</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='k'>unless</span> <span class='n'>current_user</span><span class='o'>.</span><span class='n'>present?</span>
+      <span class='n'>redirect_to</span> <span class='s2'>&quot;/my/login_page.html&quot;</span>
+    <span class='k'>end</span>
+</code></pre>
+</div>
 <h4 id='form_data'>Form data</h4>
 
 <p>When a user fills in a web form on your site and presses &#8220;Submit&#8221;, Rails gathers this information in the <em>params</em> object. For example, if you are setting up a comment form on a blog, you might read the params like this:</p>
-
-<pre><code>comment_params = params[:comment]</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='n'>comment_params</span> <span class='o'>=</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:comment</span><span class='o'>]</span>
+</code></pre>
+</div>
 <p>It&#8217;s the same whether you use a Ruby symbol or a quoted string:</p>
-
-<pre><code>comment_params = params[&quot;comment&quot;] # This is the same as the previous line.</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='n'>comment_params</span> <span class='o'>=</span> <span class='n'>params</span><span class='o'>[</span><span class='s2'>&quot;comment&quot;</span><span class='o'>]</span> <span class='c1'># This is the same as the previous line.</span>
+</code></pre>
+</div>
 <p>Then, if you&#8217;re using <a href='/A'>ActiveRecord</a>, you can use the <em>new</em> and <em>save</em> methods to write this to the database:</p>
-
-<pre><code>new_comment = Comment.new(comment_params)
-new_comment.save</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='n'>new_comment</span> <span class='o'>=</span> <span class='no'>Comment</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='n'>comment_params</span><span class='p'>)</span>
+    <span class='n'>new_comment</span><span class='o'>.</span><span class='n'>save</span>
+</code></pre>
+</div>
 <p>It&#8217;s that simple!</p>
 
 <h4 id='cookies'>Cookies</h4>
 
 <p>Rails also provides a way to access cookies. It&#8217;s pretty obvious:</p>
-
-<pre><code>cookies[:user_name] = &quot;tboyd&quot;</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='n'>cookies</span><span class='o'>[</span><span class='ss'>:user_name</span><span class='o'>]</span> <span class='o'>=</span> <span class='s2'>&quot;tboyd&quot;</span>
+</code></pre>
+</div>
 <p>Cookies can be used in many ways to enhance the user experience. One common use for a cookie is to provide a shopping cart feature. The following shopping cart will be cleared in 1 year:</p>
-
-<pre><code>cookies[:shopping_cart] = { :value =&gt; &quot;1 frisbee&quot;, :expires =&gt; 1.year.from_now }</code></pre>
-
+<div class='highlight'><pre><code class='ruby'>    <span class='n'>cookies</span><span class='o'>[</span><span class='ss'>:shopping_cart</span><span class='o'>]</span> <span class='o'>=</span> <span class='p'>{</span> <span class='ss'>:value</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;1 frisbee&quot;</span><span class='p'>,</span> <span class='ss'>:expires</span> <span class='o'>=&gt;</span> <span class='mi'>1</span><span class='o'>.</span><span class='n'>year</span><span class='o'>.</span><span class='n'>from_now</span> <span class='p'>}</span>
+</code></pre>
+</div>
 <h4 id='looking_to_the_future'>Looking to the future</h4>
 
 <p>New browser features are being introduced to the web all the time. I have only covered some of the most widely-accepted ones, but there are already dozens of others to consider. A great resource to track new browser features is <a href='http://www.caniuse.com'>CanIUse.com</a>.</p>
