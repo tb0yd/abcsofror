@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The ABCs of RoR</title>
+    <link>http://abcsofror.com/</link>
+    <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
+    <description>A simple and step-wise introduction to Rails</description>
+    <language>en-us</language>
+    <pubDate>Wed, 16 May 2012 11:02:22 -0400</pubDate>
+    <lastBuildDate>Wed, 16 May 2012 11:02:22 -0400</lastBuildDate>
+
+    
+    <item>
+      <title>C is for cross-site request forgery</title>
+      <link>http://abcsofror.com/c.html</link>
+      <pubDate>Mon, 14 May 2012 00:00:00 -0400</pubDate>
+      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <guid>http://abcsofror.com/c.html</guid>
+      <description>&lt;h4 id='what_csrf_is'&gt;What CSRF is&lt;/h4&gt;
+
+&lt;p&gt;Cross-site request forgery (CSRF) is when a victim is tricked into sending a malicious HTTP request from his own computer.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s easier than it sounds. Say a person logs into Doofusbank.com. Then he clicks a link from a suspicious email, which loads a page on Evilwebsite.com, which sends a funds transfer request to Doofusbank.com. Since he&amp;#8217;s logged in, there&amp;#8217;s a risk that Doofusbank.com might accept this forged request, unless they have protection against CSRF.&lt;/p&gt;
+
+&lt;h4 id='csrf_protection_in_rails'&gt;CSRF protection in Rails&lt;/h4&gt;
+
+&lt;p&gt;CSRF is a common and well-known problem for web applications. Rails&amp;#8217; CSRF protection is activated by placing this code in the controller:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;     &lt;span class='n'&gt;protect_from_forgery&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;There are three components in Rails&amp;#8217; CSRF protection:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The hidden &amp;#8220;authenticity_token&amp;#8221; field&lt;/li&gt;
+
+&lt;li&gt;The &amp;#8220;X-CSRF-Token&amp;#8221; HTTP header&lt;/li&gt;
+
+&lt;li&gt;The token value in the session&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id='the_hidden_authenticity_token_field'&gt;The hidden &amp;#8220;authenticity_token&amp;#8221; field&lt;/h4&gt;
+
+&lt;p&gt;The first factor to consider is a hidden form field that Rails includes in the &lt;a href='http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-form_for'&gt;form_for&lt;/a&gt; helper:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;      &lt;span class='o'&gt;&amp;lt;&lt;/span&gt;&lt;span class='n'&gt;input&lt;/span&gt; &lt;span class='nb'&gt;name&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;authenticity_token&amp;quot;&lt;/span&gt; &lt;span class='n'&gt;type&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt; &lt;span class='n'&gt;value&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;l/jRTWlC4lhJg6355yj/Kqqb8u6fdHfN1ufDU+KU1I8=&amp;quot;&lt;/span&gt; &lt;span class='sr'&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This hidden field only appears for POST requests &amp;#8211; GET requests are not protected from CSRF.&lt;/p&gt;
+
+&lt;h4 id='the_xcsrftoken_http_header'&gt;The &amp;#8220;X-CSRF-Token&amp;#8221; HTTP header&lt;/h4&gt;
+
+&lt;p&gt;Rails can be configured to send the authenticity token in the header of every AJAX call as well. If so, the headers of your AJAX calls should contain a line that looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  X-CSRF-Token: l/jRTWlC4lhJg6355yj/Kqqb8u6fdHfN1ufDU+KU1I8=&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id='the_session'&gt;The session&lt;/h4&gt;
+
+&lt;p&gt;Whether the token comes from the hidden field or the header, it has to match the token in the user&amp;#8217;s &lt;em&gt;session&lt;/em&gt; in order to pass CSRF protection.&lt;/p&gt;
+
+&lt;p&gt;By default, Rails stores the session in a cookie. This is the fastest option, but due to the lack of encryption, it&amp;#8217;s also the least secure. If you need more security, Rails can be configured to encrypt the cookie. For even more security, you can skip the cookie altogether and store the session in the database.&lt;/p&gt;
+
+&lt;h4 id='study_questions'&gt;Study Questions&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;What are the three components in Rails CSRF?&lt;/li&gt;
+
+&lt;li&gt;Using the fastest and least secure configuration, which of the three components are stored on the client?&lt;/li&gt;
+
+&lt;li&gt;Describe the response of a Rails server when a client submits an invalid CSRF token.&lt;/li&gt;
+
+&lt;li&gt;Explain why GET requests are not protected from CSRF.&lt;/li&gt;
+
+&lt;li&gt;CSRF is only one attack vector on the internet. Identify at least one other attack vector and how it&amp;#8217;s different from CSRF.&lt;/li&gt;
+
+&lt;li&gt;Imagine that your boss reads this and becomes terrified of CSRF. He then asks you to implement CSRF protection on his email client and cell phone. Enlighten him as to why this isn&amp;#8217;t necessary.&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>B is for browsers</title>
+      <link>http://abcsofror.com/b.html</link>
+      <pubDate>Mon, 14 May 2012 00:00:00 -0400</pubDate>
+      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <guid>http://abcsofror.com/b.html</guid>
+      <description>&lt;h4 id='what_web_browsers_do'&gt;What web browsers do&lt;/h4&gt;
+
+&lt;p&gt;A web browser does much more than browse the web. For example, it has to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;follow redirects&lt;/li&gt;
+
+&lt;li&gt;encode form data to HTTP&lt;/li&gt;
+
+&lt;li&gt;send and receive cookie data&lt;/li&gt;
+
+&lt;li&gt;fetch asset files&lt;/li&gt;
+
+&lt;li&gt;apply CSS to the page&lt;/li&gt;
+
+&lt;li&gt;execute Javascript included in the page&lt;/li&gt;
+
+&lt;li&gt;send and receive data via AJAX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rails provides several tools to help you make use of these widely-accepted browser features. I am going to cover the first three.&lt;/p&gt;
+
+&lt;h4 id='redirects'&gt;Redirects&lt;/h4&gt;
+
+&lt;p&gt;The most basic example is setting up redirects for the browser to follow.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;redirect_to&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;/my/target_page.html&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Including this line will make the browser cancel the current page and load your target page instead. This is useful when you want to prevent users from accessing certain pages unless they are logged in.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;unless&lt;/span&gt; &lt;span class='n'&gt;current_user&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;present?&lt;/span&gt;
+      &lt;span class='n'&gt;redirect_to&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;/my/login_page.html&amp;quot;&lt;/span&gt;
+    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id='form_data'&gt;Form data&lt;/h4&gt;
+
+&lt;p&gt;When a user fills in a web form on your site and presses &amp;#8220;Submit&amp;#8221;, Rails gathers this information in the &lt;em&gt;params&lt;/em&gt; object. For example, if you are setting up a comment form on a blog, you might read the params like this:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;comment_params&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='n'&gt;params&lt;/span&gt;&lt;span class='o'&gt;[&lt;/span&gt;&lt;span class='ss'&gt;:comment&lt;/span&gt;&lt;span class='o'&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;It&amp;#8217;s the same whether you use a Ruby symbol or a quoted string:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;comment_params&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='n'&gt;params&lt;/span&gt;&lt;span class='o'&gt;[&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;comment&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;]&lt;/span&gt; &lt;span class='c1'&gt;# This is the same as the previous line.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, if you&amp;#8217;re using &lt;a href='/A'&gt;ActiveRecord&lt;/a&gt;, you can use the &lt;em&gt;new&lt;/em&gt; and &lt;em&gt;save&lt;/em&gt; methods to write this to the database:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;new_comment&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='no'&gt;Comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;new&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;comment_params&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+    &lt;span class='n'&gt;new_comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;save&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;It&amp;#8217;s that simple!&lt;/p&gt;
+
+&lt;h4 id='cookies'&gt;Cookies&lt;/h4&gt;
+
+&lt;p&gt;Rails also provides a way to access cookies. It&amp;#8217;s pretty obvious:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;cookies&lt;/span&gt;&lt;span class='o'&gt;[&lt;/span&gt;&lt;span class='ss'&gt;:user_name&lt;/span&gt;&lt;span class='o'&gt;]&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;tboyd&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Cookies can be used in many ways to enhance the user experience. One common use for a cookie is to provide a shopping cart feature. The following shopping cart will be cleared in 1 year:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;cookies&lt;/span&gt;&lt;span class='o'&gt;[&lt;/span&gt;&lt;span class='ss'&gt;:shopping_cart&lt;/span&gt;&lt;span class='o'&gt;]&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='ss'&gt;:value&lt;/span&gt; &lt;span class='o'&gt;=&amp;gt;&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;1 frisbee&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='ss'&gt;:expires&lt;/span&gt; &lt;span class='o'&gt;=&amp;gt;&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;year&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;from_now&lt;/span&gt; &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id='looking_to_the_future'&gt;Looking to the future&lt;/h4&gt;
+
+&lt;p&gt;New browser features are being introduced to the web all the time. I have only covered some of the most widely-accepted ones, but there are already dozens of others to consider. A great resource to track new browser features is &lt;a href='http://www.caniuse.com'&gt;CanIUse.com&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A is for ActiveRecord</title>
+      <link>http://abcsofror.com/a.html</link>
+      <pubDate>Wed, 09 May 2012 00:00:00 -0400</pubDate>
+      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <guid>http://abcsofror.com/a.html</guid>
+      <description>&lt;h4 id='how_to_create_a_blog_in_15_steps'&gt;How to create a blog in 15 steps&lt;/h4&gt;
+
+&lt;p&gt;My introduction to Rails in 2008 was by way of a forum post called &lt;a href='http://railsforum.com/viewtopic.php?id=17671'&gt;&amp;#8220;HowTo Create a Rails Blog in 15 steps without nested resources + AJAX.&amp;#8221;&lt;/a&gt; The author&amp;#8217;s tutorial is now outdated, but the part on ActiveRecord is still relevant.&lt;/p&gt;
+
+&lt;p&gt;In step 9 of his tutorial, the author presents the following code snippets:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;class&lt;/span&gt; &lt;span class='nc'&gt;Post&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&lt;/span&gt; &lt;span class='no'&gt;ActiveRecord&lt;/span&gt;&lt;span class='o'&gt;::&lt;/span&gt;&lt;span class='no'&gt;Base&lt;/span&gt;
+      &lt;span class='n'&gt;has_many&lt;/span&gt; &lt;span class='ss'&gt;:comments&lt;/span&gt;
+    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;#8230;and&amp;#8230;&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;class&lt;/span&gt; &lt;span class='nc'&gt;Comment&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&lt;/span&gt; &lt;span class='no'&gt;ActiveRecord&lt;/span&gt;&lt;span class='o'&gt;::&lt;/span&gt;&lt;span class='no'&gt;Base&lt;/span&gt;
+      &lt;span class='n'&gt;belongs_to&lt;/span&gt; &lt;span class='ss'&gt;:post&lt;/span&gt;
+    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;These 6 lines of code do a whole lot of nifty things. Let&amp;#8217;s look at them line by line.&lt;/p&gt;
+
+&lt;h4 id='inheriting_from_activerecordbase'&gt;Inheriting from ActiveRecord::Base&lt;/h4&gt;
+
+&lt;p&gt;The first line defines a &lt;em&gt;Post&lt;/em&gt; class and its relationship to the &lt;em&gt;ActiveRecord::Base&lt;/em&gt; class. &lt;em&gt;Post&lt;/em&gt; &lt;a href='/O'&gt;inherits&lt;/a&gt; from &lt;em&gt;ActiveRecord::Base&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;So what does Post inherit from ActiveRecord? A whole lot of methods. From them:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Post.create&lt;/li&gt;
+
+&lt;li&gt;Post.find&lt;/li&gt;
+
+&lt;li&gt;Post.new&lt;/li&gt;
+
+&lt;li&gt;Post.all&lt;/li&gt;
+
+&lt;li&gt;Post.first&lt;/li&gt;
+
+&lt;li&gt;Post.last&lt;/li&gt;
+
+&lt;li&gt;Post.destroy_all&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ActiveRecord is designed to save Posts in the &amp;#8220;posts&amp;#8221; table in your &lt;a href='/D'&gt;database&lt;/a&gt; by inferring the name of the table from the name of the class.&lt;/p&gt;
+
+&lt;h4 id='attribute_methods'&gt;Attribute methods&lt;/h4&gt;
+
+&lt;p&gt;ActiveRecord finds out the attributes of a Post by reading the &amp;#8220;posts&amp;#8221; table, and then gives you many more methods related to these attributes.&lt;/p&gt;
+
+&lt;p&gt;In this example, a Post can have a title and a body. So, you can use the following methods to write to a Post:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;post.title = &amp;#8221;I&amp;#8217;m learning Rails!&amp;#8221;&lt;/li&gt;
+
+&lt;li&gt;post.body = &amp;#8220;Help!&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;#8230;and the following methods to read a Post:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;post.title &lt;br /&gt; =&amp;gt; &amp;#8221;I&amp;#8217;m learning Rails!&amp;#8221;&lt;/li&gt;
+
+&lt;li&gt;post.body &lt;br /&gt; =&amp;gt; &amp;#8220;Help!&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are many other methods generated by ActiveRecord, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Post.find_by_title(&amp;#8221;I&amp;#8217;m learning Rails!&amp;#8221;)&lt;/li&gt;
+
+&lt;li&gt;Post.find_by_body(&amp;#8220;Help!&amp;#8221;)&lt;/li&gt;
+
+&lt;li&gt;Post.where(:title =&amp;gt; &amp;#8221;I&amp;#8217;m learning Rails!&amp;#8221;)&lt;/li&gt;
+
+&lt;li&gt;Post.where(:body =&amp;gt; &amp;#8220;Help!&amp;#8221;)&lt;/li&gt;
+
+&lt;li&gt;post.update_attributes(:title =&amp;gt; &amp;#8221;I&amp;#8217;m still learning Rails!&amp;#8221;)&lt;/li&gt;
+
+&lt;li&gt;post.title_changed?&lt;/li&gt;
+
+&lt;li&gt;post.body_changed?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Again, all of this is a result of that first line of code:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;class&lt;/span&gt; &lt;span class='nc'&gt;Comment&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&lt;/span&gt; &lt;span class='no'&gt;ActiveRecord&lt;/span&gt;&lt;span class='o'&gt;::&lt;/span&gt;&lt;span class='no'&gt;Base&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id='associations_in_activerecord'&gt;Associations in ActiveRecord&lt;/h4&gt;
+
+&lt;p&gt;The next line we come to is:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;      &lt;span class='n'&gt;has_many&lt;/span&gt; &lt;span class='ss'&gt;:comments&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Just like the first line, the second line results in a whole lot of new methods being generated. Here&amp;#8217;s the full list (from the &lt;a href='http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html'&gt;official Rails documentation&lt;/a&gt;):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;post.comments&lt;/li&gt;
+
+&lt;li&gt;post.comments =&lt;/li&gt;
+
+&lt;li&gt;post.comment_ids&lt;/li&gt;
+
+&lt;li&gt;post.comment_ids =&lt;/li&gt;
+
+&lt;li&gt;post.comments &amp;#171;&lt;/li&gt;
+
+&lt;li&gt;post.comments.push&lt;/li&gt;
+
+&lt;li&gt;post.comments.concat&lt;/li&gt;
+
+&lt;li&gt;post.comments.build&lt;/li&gt;
+
+&lt;li&gt;post.comments.create&lt;/li&gt;
+
+&lt;li&gt;post.comments.create!&lt;/li&gt;
+
+&lt;li&gt;post.comments.size&lt;/li&gt;
+
+&lt;li&gt;post.comments.length&lt;/li&gt;
+
+&lt;li&gt;post.comments.count&lt;/li&gt;
+
+&lt;li&gt;post.comments.sum&lt;/li&gt;
+
+&lt;li&gt;post.comments.empty?&lt;/li&gt;
+
+&lt;li&gt;post.comments.clear&lt;/li&gt;
+
+&lt;li&gt;post.comments.delete&lt;/li&gt;
+
+&lt;li&gt;post.comments.delete_all&lt;/li&gt;
+
+&lt;li&gt;post.comments.destroy_all&lt;/li&gt;
+
+&lt;li&gt;post.comments.find&lt;/li&gt;
+
+&lt;li&gt;post.comments.exists?&lt;/li&gt;
+
+&lt;li&gt;post.comments.uniq&lt;/li&gt;
+
+&lt;li&gt;post.comments.reset&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id='wrapping_up'&gt;Wrapping up&lt;/h4&gt;
+
+&lt;p&gt;The third line of code is:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;#8230;which doesn&amp;#8217;t need any explanation, nor do the next three lines; they&amp;#8217;re similar to the first three.&lt;/p&gt;
+
+&lt;p&gt;Perhaps now you see why developers are drawn to Ruby on Rails. Once you&amp;#8217;ve written a few lines of setup code, you already have a large vocabulary of methods for manipulating your data.&lt;/p&gt;</description>
+    </item>
+    
+
+  </channel> 
+</rss>
