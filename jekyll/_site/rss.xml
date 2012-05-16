@@ -6,21 +6,19 @@
     <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>A simple and step-wise introduction to Rails</description>
     <language>en-us</language>
-    <pubDate>Wed, 16 May 2012 14:01:12 -0400</pubDate>
-    <lastBuildDate>Wed, 16 May 2012 14:01:12 -0400</lastBuildDate>
+    <pubDate>Wed, 16 May 2012 18:50:00 -0400</pubDate>
+    <lastBuildDate>Wed, 16 May 2012 18:50:00 -0400</lastBuildDate>
 
     
     <item>
       <title>D is for databases</title>
       <link>http://abcsofror.com/d.html</link>
       <pubDate>Wed, 16 May 2012 00:00:00 -0400</pubDate>
-      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <author>Tyler Boyd</author>
       <guid>http://abcsofror.com/d.html</guid>
-      <description>&lt;h4 id='introduction_the_unix_shell'&gt;Introduction: the Unix shell&lt;/h4&gt;
+      <description>&lt;h4 id='introducing_the_shell'&gt;Introducing the shell&lt;/h4&gt;
 
-&lt;p&gt;Every language has its environment. Javascript has the browser, Java has the JVM, and ASP.net has Windows. The optimal environment for Ruby on Rails is Unix. You can run Unix shell commands on the Linux or OS X terminal, or on Windows using Cygwin.&lt;/p&gt;
-
-&lt;p&gt;In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code, which may look similar. They aren&amp;#8217;t part of the command.&lt;/p&gt;
+&lt;p&gt;Rails doesn&amp;#8217;t come with a database built-in, but instead offers an interface to the database via the Unix shell scripts. You can run shell commands on the Linux or OS X terminal, or on Windows using Cygwin. In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code. The dollar sign is not part of the command.&lt;/p&gt;
 
 &lt;h4 id='setup'&gt;Setup&lt;/h4&gt;
 
@@ -87,7 +85,7 @@ $ rake db:reset&lt;/code&gt;&lt;/pre&gt;</description>
       <title>C is for cross-site request forgery</title>
       <link>http://abcsofror.com/c.html</link>
       <pubDate>Mon, 14 May 2012 00:00:00 -0400</pubDate>
-      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <author>Tyler Boyd</author>
       <guid>http://abcsofror.com/c.html</guid>
       <description>&lt;h4 id='what_csrf_is'&gt;What CSRF is&lt;/h4&gt;
 
@@ -152,7 +150,7 @@ $ rake db:reset&lt;/code&gt;&lt;/pre&gt;</description>
       <title>B is for browsers</title>
       <link>http://abcsofror.com/b.html</link>
       <pubDate>Mon, 14 May 2012 00:00:00 -0400</pubDate>
-      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <author>Tyler Boyd</author>
       <guid>http://abcsofror.com/b.html</guid>
       <description>&lt;h4 id='what_web_browsers_do'&gt;What web browsers do&lt;/h4&gt;
 
@@ -224,7 +222,7 @@ $ rake db:reset&lt;/code&gt;&lt;/pre&gt;</description>
       <title>A is for ActiveRecord</title>
       <link>http://abcsofror.com/a.html</link>
       <pubDate>Wed, 09 May 2012 00:00:00 -0400</pubDate>
-      <author>tboyd47@gmail.com (Tyler Boyd)</author>
+      <author>Tyler Boyd</author>
       <guid>http://abcsofror.com/a.html</guid>
       <description>&lt;h4 id='how_to_create_a_blog_in_15_steps'&gt;How to create a blog in 15 steps&lt;/h4&gt;
 
