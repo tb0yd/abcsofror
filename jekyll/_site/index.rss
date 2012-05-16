@@ -6,9 +6,82 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Wed, 16 May 2012 11:02:22 -0400</pubDate>
-    <lastBuildDate>Wed, 16 May 2012 11:02:22 -0400</lastBuildDate>
+    <pubDate>Wed, 16 May 2012 12:45:51 -0400</pubDate>
+    <lastBuildDate>Wed, 16 May 2012 12:45:51 -0400</lastBuildDate>
 
+    
+    <item>
+      <title>D is for databases</title>
+      <link>http://coyled.comd.html</link>
+      <pubDate>Wed, 16 May 2012 00:00:00 -0400</pubDate>
+      <author>coyled@coyled.com (Dave Coyle)</author>
+      <guid>http://coyled.com./d</guid>
+      <description>&lt;h4 id='introduction_the_unix_shell'&gt;Introduction: the Unix shell&lt;/h4&gt;
+
+&lt;p&gt;Every language has its environment. Javascript has the browser, Java has the JVM, and ASP.net has Windows. The optimal environment for Ruby on Rails is Unix. You can run Unix shell commands on the Linux or OS X terminal, or on Windows using Cygwin.&lt;/p&gt;
+
+&lt;p&gt;In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code, which may look similar. They aren&amp;#8217;t part of the command.&lt;/p&gt;
+
+&lt;h4 id='setup'&gt;Setup&lt;/h4&gt;
+
+&lt;p&gt;The command for setting up your development database is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rake db:create&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to set up databases for other environments, you can do so using the environment variable RAILS_ENV:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ RAILS_ENV=test rake db:create&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, you can set them all up at once:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rake db:create:all&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id='migrations'&gt;Migrations&lt;/h4&gt;
+
+&lt;p&gt;Migrations are a way to change the &lt;em&gt;schema&lt;/em&gt;, or structure of your database. For example, the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rails g migration CreatePostsTable&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;#8230;prints this output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  invoke  active_record
+  create    db/migrate/20120516155552_create_posts_table.rb&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;#8230;and creates this migration file:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;class&lt;/span&gt; &lt;span class='nc'&gt;CreatePostsTable&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&lt;/span&gt; &lt;span class='no'&gt;ActiveRecord&lt;/span&gt;&lt;span class='o'&gt;::&lt;/span&gt;&lt;span class='no'&gt;Migration&lt;/span&gt;
+      &lt;span class='k'&gt;def&lt;/span&gt; &lt;span class='nf'&gt;change&lt;/span&gt;
+      &lt;span class='k'&gt;end&lt;/span&gt;
+    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;You can then write Rails code in this file that alters your database.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='k'&gt;class&lt;/span&gt; &lt;span class='nc'&gt;CreatePostsTable&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&lt;/span&gt; &lt;span class='no'&gt;ActiveRecord&lt;/span&gt;&lt;span class='o'&gt;::&lt;/span&gt;&lt;span class='no'&gt;Migration&lt;/span&gt;
+      &lt;span class='k'&gt;def&lt;/span&gt; &lt;span class='nf'&gt;change&lt;/span&gt;
+        &lt;span class='n'&gt;create_table&lt;/span&gt; &lt;span class='ss'&gt;:posts&lt;/span&gt; &lt;span class='k'&gt;do&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;t&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+          &lt;span class='n'&gt;t&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;string&lt;/span&gt; &lt;span class='ss'&gt;:title&lt;/span&gt;
+          &lt;span class='n'&gt;t&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;text&lt;/span&gt; &lt;span class='ss'&gt;:body&lt;/span&gt;
+        &lt;span class='k'&gt;end&lt;/span&gt;
+      &lt;span class='k'&gt;end&lt;/span&gt;
+    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;You can run this migration like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rake db:migrate&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Migrations can also be reverted.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rake db:migrate:down VERSION=20120516155552&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id='other_commands'&gt;Other commands&lt;/h4&gt;
+
+&lt;p&gt;Here are some more useful database-related commands in Rails:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rake db:seed
+$ rake db:test:clone_structure
+$ rake db:destroy
+$ rake db:reset&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>C is for cross-site request forgery</title>
