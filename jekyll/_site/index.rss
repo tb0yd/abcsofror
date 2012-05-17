@@ -6,8 +6,8 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Wed, 16 May 2012 18:58:12 -0400</pubDate>
-    <lastBuildDate>Wed, 16 May 2012 18:58:12 -0400</lastBuildDate>
+    <pubDate>Thu, 17 May 2012 09:01:43 -0400</pubDate>
+    <lastBuildDate>Thu, 17 May 2012 09:01:43 -0400</lastBuildDate>
 
     
     <item>
@@ -18,7 +18,7 @@
       <guid>http://coyled.com./d</guid>
       <description>&lt;h4 id='introducing_the_shell'&gt;Introducing the shell&lt;/h4&gt;
 
-&lt;p&gt;Rails doesn&amp;#8217;t come with a database built-in, but instead offers an interface to your database via Unix shell scripts. You can run shell commands on the Linux or OS X terminal, or on Windows using Cygwin. In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code. The dollar sign is not part of the command.&lt;/p&gt;
+&lt;p&gt;Rails doesn&amp;#8217;t come with a database built-in, but instead offers an interface to your database via the Unix shell. You can run shell commands on the Linux or OS X terminal, or on Windows using Cygwin. In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code. The dollar sign is not part of the command.&lt;/p&gt;
 
 &lt;h4 id='setup'&gt;Setup&lt;/h4&gt;
 
