@@ -6,9 +6,79 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Sun, 20 May 2012 12:25:24 -0400</pubDate>
-    <lastBuildDate>Sun, 20 May 2012 12:25:24 -0400</lastBuildDate>
+    <pubDate>Sun, 20 May 2012 13:28:21 -0400</pubDate>
+    <lastBuildDate>Sun, 20 May 2012 13:28:21 -0400</lastBuildDate>
 
+    
+    <item>
+      <title>E is for ERb</title>
+      <link>http://coyled.come.html</link>
+      <pubDate>Sun, 20 May 2012 00:00:00 -0400</pubDate>
+      <author>coyled@coyled.com (Dave Coyle)</author>
+      <guid>http://coyled.com./e</guid>
+      <description>&lt;h4 id='preamble_erb_vs_haml'&gt;Preamble: ERb vs. Haml&lt;/h4&gt;
+
+&lt;p&gt;Some Rubyists may be less than pleased to see ERb featured here rather than Haml. It&amp;#8217;s a topic of hot debate among Rails enthusiasts. I myself am quite impartial, having used both ERb and Haml in a production environment. Both are viable formats for your views, and there are pros and cons to both.&lt;/p&gt;
+
+&lt;p&gt;However, ERb is given preference here because the barrier to entry is lower and because I already picked HTTP for the &amp;#8220;H&amp;#8221; article.&lt;/p&gt;
+
+&lt;h4 id='syntax'&gt;Syntax&lt;/h4&gt;
+
+&lt;p&gt;ERb is one Rails solution for interpolating server-side code in HTML. This will be your main way of including dynamic data in your website.&lt;/p&gt;
+
+&lt;p&gt;The syntax is similar to other server-side web frameworks: &amp;lt;%= %&amp;gt; signifies that the enclosed code is Ruby and should be evaluated. For example, the following code:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='erb'&gt;&lt;span class='x'&gt;    &amp;lt;p&amp;gt;This post has &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%=&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;size&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x'&gt; comments.&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;changes into this HTML when @post has 3 comments:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;    &lt;span class='nt'&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This post has 3 comments.&lt;span class='nt'&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id='looping'&gt;Looping&lt;/h4&gt;
+
+&lt;p&gt;ERb also allows for more complex types of interpolation with the &amp;lt;% %&amp;gt; syntax. For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='erb'&gt;&lt;span class='x'&gt;    &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;each&lt;/span&gt; &lt;span class='k'&gt;do&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x' /&gt;
+&lt;span class='x'&gt;      &amp;lt;p&amp;gt;&lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%=&lt;/span&gt; &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x'&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class='x'&gt;      &amp;lt;hr /&amp;gt;&lt;/span&gt;
+&lt;span class='x'&gt;    &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%&lt;/span&gt; &lt;span class='k'&gt;end&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x' /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;will change into something like this:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;      &lt;span class='nt'&gt;&amp;lt;p&amp;gt;&lt;/span&gt;First post!&lt;span class='nt'&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+      &lt;span class='nt'&gt;&amp;lt;hr&lt;/span&gt; &lt;span class='nt'&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class='nt'&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I like pancakes&lt;span class='nt'&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+      &lt;span class='nt'&gt;&amp;lt;hr&lt;/span&gt; &lt;span class='nt'&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class='nt'&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Blaaaah&lt;span class='nt'&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+      &lt;span class='nt'&gt;&amp;lt;hr&lt;/span&gt; &lt;span class='nt'&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;If you&amp;#8217;ve ever worked with ASP.net or JSP, this is nothing new.&lt;/p&gt;
+
+&lt;h4 id='passing_blocks'&gt;Passing blocks&lt;/h4&gt;
+
+&lt;p&gt;You can also pass blocks of HTML as if they are blocks of code:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='erb'&gt;&lt;span class='x'&gt;    &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%=&lt;/span&gt; &lt;span class='n'&gt;form_for&lt;/span&gt; &lt;span class='no'&gt;Comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;new&lt;/span&gt; &lt;span class='k'&gt;do&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;f&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x' /&gt;
+&lt;span class='x'&gt;      &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%=&lt;/span&gt; &lt;span class='n'&gt;f&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;label&lt;/span&gt; &lt;span class='ss'&gt;:body&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x'&gt;:&lt;/span&gt;
+&lt;span class='x'&gt;      &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%=&lt;/span&gt; &lt;span class='n'&gt;f&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;text_area&lt;/span&gt; &lt;span class='ss'&gt;:body&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x' /&gt;
+
+&lt;span class='x'&gt;      &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%=&lt;/span&gt; &lt;span class='n'&gt;f&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;submit&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x' /&gt;
+&lt;span class='x'&gt;    &lt;/span&gt;&lt;span class='cp'&gt;&amp;lt;%&lt;/span&gt; &lt;span class='k'&gt;end&lt;/span&gt; &lt;span class='cp'&gt;%&amp;gt;&lt;/span&gt;&lt;span class='x' /&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;#8230;which renders a fully-functional HTML form.&lt;/p&gt;
+
+&lt;h4 id='serverside_vs_clientside'&gt;Server-side vs. client-side&lt;/h4&gt;
+
+&lt;p&gt;The upside to ERb (and Haml) is that it&amp;#8217;s a fully server-side technology &amp;#8211; your users won&amp;#8217;t need to execute the code on their browsers or even know that it exists. You have full control over who has access to the code and over the environment in which the code is executed. That generally makes it much safer, faster, and easier to implement than a comparable solution in Flash or Javascript.&lt;/p&gt;
+
+&lt;p&gt;The downside is that you will be serving different data from the same URL, so it will be harder to take advantage of HTTP&amp;#8217;s built-in caching mechanisms. It also becomes more difficult to track exactly which content is being shown to which users. User experience is also affected as the user must reload the page to see changes in dynamic data. Many Rails developers make use of AJAX to address these problems.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, the best way to deliver dynamic data will vary from project to project and even from page to page. So the responsibility must fall on the developer to take all these concerns into consideration and implement the best solution every time.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>D is for databases</title>

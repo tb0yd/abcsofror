@@ -112,7 +112,7 @@
 				margin-left: 5px;
 			}
 		</style>
-		<title>The ABCs of RoR: A simple introduction to using Rails</title>
+		<title>The ABCs of RoR: E is for ERb</title>
 		<link rel="shortcut icon" href="favicon.ico" />
 		<script>
 			$(function() {
@@ -825,212 +825,92 @@
 				<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
 
 				<hr />
-<div class="selection">
-	<a href="a.html">
-	<h2>A is for ActiveRecord</h2>
-
-	<h6>Get an overview of the ORM framework that makes Rails Rails.</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="b.html">
-
-	<h2>B is for browsers</h2>
-
-	<h6>Every user's window to your work</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="c.html">
-
-	<h2>C is for cross-site request forgery</h2>
-
-	<h6>It's 2AM. Do you know where your cookies are?</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="d.html">
-	<h2>D is for databases</h2>
-
-	<h6>Your app's most important external dependency</h6>
-</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<a href="e.html">
+<div class="letter">
 	<h2>E is for ERb</h2>
-
-	<h6>Ruby-flavored HTML</h6>
-</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>F is for functional programming</h2>
-
-	<h6>After reading this, you'll never use a for-loop again.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>G is for gems</h2>
-
-	<h6>Yes, in Ruby, the main format for packaging software is the "gem". Seriously.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>H is for HTTP</h2>
-
-	<h6>The basis of all web transactions</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>I is for IRb</h2>
-
-	<h6>Meet your new best friend for debugging purposes.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>J is for Javascript</h2>
-
-	<h6>Many dense books have been written on it; why not a few more paragraphs?</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>K is for Kernel</h2>
-
-	<h6>This Ruby module will open up a whole new world of possibilities.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>L is for LAMP</h2>
-
-	<h6>Here, it should really be "LAMR," but for some reason that hasn't caught on.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>M is for Model-View-Controller</h2>
-
-	<h6>A single design pattern that fits 99% of domains, whether you like it or not.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>N is for nested forms</h2>
-
-	<h6>Read this now and save yourself years of writing complex forms the wrong way.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>O is for object-oriented programming</h2>
-
-	<h6>Every class is an object, but not every object is a class, but "Object" is a class and "class" is not an object.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>P is for performance</h2>
-	<h6>Clearing N+1s and feeling like a hero</h6>
+	<h6>Ruby-flavored HTML</h2>
 </div>
 <hr />
+<h4 id='preamble_erb_vs_haml'>Preamble: ERb vs. Haml</h4>
 
-<div class="selection">
-	<h2>Q is for quality assurance</h2>
+<p>Some Rubyists may be less than pleased to see ERb featured here rather than Haml. It&#8217;s a topic of hot debate among Rails enthusiasts. I myself am quite impartial, having used both ERb and Haml in a production environment. Both are viable formats for your views, and there are pros and cons to both.</p>
 
-	<h6>Your best friend is the one who corrects you when you make a mistake.</h6>
+<p>However, ERb is given preference here because the barrier to entry is lower and because I already picked HTTP for the &#8220;H&#8221; article.</p>
 
+<h4 id='syntax'>Syntax</h4>
+
+<p>ERb is one Rails solution for interpolating server-side code in HTML. This will be your main way of including dynamic data in your website.</p>
+
+<p>The syntax is similar to other server-side web frameworks: &lt;%= %&gt; signifies that the enclosed code is Ruby and should be evaluated. For example, the following code:</p>
+
+<p><div class='highlight'><pre><code class='erb'><span class='x'>    &lt;p&gt;This post has </span><span class='cp'>&lt;%=</span> <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>size</span> <span class='cp'>%&gt;</span><span class='x'> comments.&lt;/p&gt;</span>
+</code></pre>
+</div></p>
+
+<p>&#8230;changes into this HTML when @post has 3 comments:</p>
+<div class='highlight'><pre><code class='html'>    <span class='nt'>&lt;p&gt;</span>This post has 3 comments.<span class='nt'>&lt;/p&gt;</span>
+</code></pre>
 </div>
-<hr />
+<h4 id='looping'>Looping</h4>
 
-<div class="selection">
-	<h2>R is for Ruby</h2>
+<p>ERb also allows for more complex types of interpolation with the &lt;% %&gt; syntax. For example:</p>
 
-	<h6>Making programmers happy since 1993</h6>
+<p><div class='highlight'><pre><code class='erb'><span class='x'>    </span><span class='cp'>&lt;%</span> <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>      &lt;p&gt;</span><span class='cp'>&lt;%=</span> <span class='n'>comment</span><span class='o'>.</span><span class='n'>body</span> <span class='cp'>%&gt;</span><span class='x'>&lt;/p&gt;</span>
+<span class='x'>      &lt;hr /&gt;</span>
+<span class='x'>    </span><span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre>
+</div></p>
 
+<p>&#8230;will change into something like this:</p>
+<div class='highlight'><pre><code class='html'>      <span class='nt'>&lt;p&gt;</span>First post!<span class='nt'>&lt;/p&gt;</span>
+      <span class='nt'>&lt;hr</span> <span class='nt'>/&gt;</span>
+      <span class='nt'>&lt;p&gt;</span>I like pancakes<span class='nt'>&lt;/p&gt;</span>
+      <span class='nt'>&lt;hr</span> <span class='nt'>/&gt;</span>
+      <span class='nt'>&lt;p&gt;</span>Blaaaah<span class='nt'>&lt;/p&gt;</span>
+      <span class='nt'>&lt;hr</span> <span class='nt'>/&gt;</span>
+</code></pre>
 </div>
-<hr />
+<p>If you&#8217;ve ever worked with ASP.net or JSP, this is nothing new.</p>
 
-<div class="selection">
-	<h2>S is for source control</h2>
+<h4 id='passing_blocks'>Passing blocks</h4>
 
-	<h6>Sometimes it's the only documentation you need.</h6>
+<p>You can also pass blocks of HTML as if they are blocks of code:</p>
+<div class='highlight'><pre><code class='erb'><span class='x'>    </span><span class='cp'>&lt;%=</span> <span class='n'>form_for</span> <span class='no'>Comment</span><span class='o'>.</span><span class='n'>new</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>f</span><span class='o'>|</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>      </span><span class='cp'>&lt;%=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>label</span> <span class='ss'>:body</span> <span class='cp'>%&gt;</span><span class='x'>:</span>
+<span class='x'>      </span><span class='cp'>&lt;%=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>text_area</span> <span class='ss'>:body</span> <span class='cp'>%&gt;</span><span class='x' />
 
+<span class='x'>      </span><span class='cp'>&lt;%=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>submit</span> <span class='cp'>%&gt;</span><span class='x' />
+<span class='x'>    </span><span class='cp'>&lt;%</span> <span class='k'>end</span> <span class='cp'>%&gt;</span><span class='x' />
+</code></pre>
 </div>
+<p>&#8230;which renders a fully-functional HTML form.</p>
+
+<h4 id='serverside_vs_clientside'>Server-side vs. client-side</h4>
+
+<p>The upside to ERb (and Haml) is that it&#8217;s a fully server-side technology &#8211; your users won&#8217;t need to execute the code on their browsers or even know that it exists. You have full control over who has access to the code and over the environment in which the code is executed. That generally makes it much safer, faster, and easier to implement than a comparable solution in Flash or Javascript.</p>
+
+<p>The downside is that you will be serving different data from the same URL, so it will be harder to take advantage of HTTP&#8217;s built-in caching mechanisms. It also becomes more difficult to track exactly which content is being shown to which users. User experience is also affected as the user must reload the page to see changes in dynamic data. Many Rails developers make use of AJAX to address these problems.</p>
+
+<p>In my opinion, the best way to deliver dynamic data will vary from project to project and even from page to page. So the responsibility must fall on the developer to take all these concerns into consideration and implement the best solution every time.</p>
+
 <hr />
+<br />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'abcsofror'; // required: replace example with your forum shortname
+    var disqus_identifier = '/' + "e.html";
+    var disqus_url = 'http://www.abcsofror.com/' + "e.html";
 
-<div class="selection">
-	<h2>T is for text editor</h2>
-
-	<h6>Learning a good one can double your productivity.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>U is for unit tests</h2>
-
-	<h6>Write them before you code, or write them afterwards. Write them.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>V is for validation</h2>
-
-	<h6>ActiveRecord makes it easy to be as nitpicky about your data as you want.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>X is for XML</h2>
-
-	<h6>It's bulky, it's confusing, and it's everywhere. Here's how to use it in Rails.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Y is for YAML</h2>
-
-	<h6>Learn the format of the Rails configuration files.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Z is for zero</h2>
-
-	<h6>It's the number of things related to Rails that start with Z. <strong>Congratulations, you're done!</strong></h6>
-
-</div>
-<hr />
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 				<br /><br />
 				<div class="span-10 append-1 last right sep" style="text-align:right;">Made by <span class="signature">Tyler Boyd</span></div>
