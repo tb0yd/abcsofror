@@ -6,8 +6,8 @@
     <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>A simple and step-wise introduction to Rails</description>
     <language>en-us</language>
-    <pubDate>Sun, 20 May 2012 13:28:21 -0400</pubDate>
-    <lastBuildDate>Sun, 20 May 2012 13:28:21 -0400</lastBuildDate>
+    <pubDate>Sun, 20 May 2012 13:32:46 -0400</pubDate>
+    <lastBuildDate>Sun, 20 May 2012 13:32:46 -0400</lastBuildDate>
 
     
     <item>
@@ -75,7 +75,7 @@
 
 &lt;p&gt;The upside to ERb (and Haml) is that it&amp;#8217;s a fully server-side technology &amp;#8211; your users won&amp;#8217;t need to execute the code on their browsers or even know that it exists. You have full control over who has access to the code and over the environment in which the code is executed. That generally makes it much safer, faster, and easier to implement than a comparable solution in Flash or Javascript.&lt;/p&gt;
 
-&lt;p&gt;The downside is that you will be serving different data from the same URL, so it will be harder to take advantage of HTTP&amp;#8217;s built-in caching mechanisms. It also becomes more difficult to track exactly which content is being shown to which users. User experience is also affected as the user must reload the page to see changes in dynamic data. Many Rails developers make use of AJAX to address these problems.&lt;/p&gt;
+&lt;p&gt;The downside is that you will be serving different data from the same URL, so it will be harder to take advantage of HTTP&amp;#8217;s built-in caching mechanisms. It also becomes more difficult to track exactly which content is being shown to which users. User experience is also affected as the user must reload the page to see changes in dynamic data. So, many Rails developers choose to display dynamic data with AJAX to address these problems.&lt;/p&gt;
 
 &lt;p&gt;In my opinion, the best way to deliver dynamic data will vary from project to project and even from page to page. So the responsibility must fall on the developer to take all these concerns into consideration and implement the best solution every time.&lt;/p&gt;</description>
     </item>
