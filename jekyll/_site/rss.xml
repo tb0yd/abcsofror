@@ -6,8 +6,8 @@
     <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>A simple and step-wise introduction to Rails</description>
     <language>en-us</language>
-    <pubDate>Thu, 17 May 2012 09:01:43 -0400</pubDate>
-    <lastBuildDate>Thu, 17 May 2012 09:01:43 -0400</lastBuildDate>
+    <pubDate>Sun, 20 May 2012 12:04:09 -0400</pubDate>
+    <lastBuildDate>Sun, 20 May 2012 12:04:09 -0400</lastBuildDate>
 
     
     <item>
@@ -18,7 +18,9 @@
       <guid>http://abcsofror.com/d.html</guid>
       <description>&lt;h4 id='introducing_the_shell'&gt;Introducing the shell&lt;/h4&gt;
 
-&lt;p&gt;Rails doesn&amp;#8217;t come with a database built-in, but instead offers an interface to your database via the Unix shell. You can run shell commands on the Linux or OS X terminal, or on Windows using Cygwin. In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code. The dollar sign is not part of the command.&lt;/p&gt;
+&lt;p&gt;Rails doesn&amp;#8217;t come with a database built-in, but instead offers an interface to your database via the Unix shell. You can run shell commands on the Linux or OS X terminal, or on Windows using Cygwin.&lt;/p&gt;
+
+&lt;p&gt;In this guide (and many other websites), shell commands are prefixed by a dollar sign in order to distinguish them from Ruby code. The dollar sign is not part of the command.&lt;/p&gt;
 
 &lt;h4 id='setup'&gt;Setup&lt;/h4&gt;
 
@@ -71,14 +73,21 @@
 
 &lt;pre&gt;&lt;code&gt;$ rake db:migrate:down VERSION=20120516155552&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id='other_commands'&gt;Other commands&lt;/h4&gt;
+&lt;h4 id='shell_shock'&gt;Shell shock&lt;/h4&gt;
 
-&lt;p&gt;Here are some more useful database-related commands in Rails:&lt;/p&gt;
+&lt;p&gt;Depending on your background, you may not be used to running so many commands from the shell. It may be the first time you&amp;#8217;ve ever opened a shell. You may still be trying to get &amp;#8220;rake&amp;#8221; to work on Cygwin, or trying to install the MySQL dev package on your Linux distro, or just pasting random exceptions into Google hoping that something makes your errors go away. On the other end, you might be saying, &amp;#8220;Why learn this annoying and complicated language SQL? Why can&amp;#8217;t I use CouchDB, Redis, or simply store everything in files like a Windows application?&amp;#8221; In contrast, if you&amp;#8217;re a SQL expert, you might be saying, &amp;#8220;Why do I have to use ActiveRecord to generate SQL queries? Why can&amp;#8217;t I just write all my SQL myself?&amp;#8221;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rake db:seed
-$ rake db:test:clone_structure
-$ rake db:destroy
-$ rake db:reset&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;p&gt;It may seem like a lot of unnecessary yak-shaving, and perhaps in some cases it is. But there are good historical reasons why this has to be.&lt;/p&gt;
+
+&lt;h4 id='from_orchestra_to_oneman_band'&gt;From orchestra to one-man band&lt;/h4&gt;
+
+&lt;p&gt;Web development has an undeserved reputation of being only for amateurs, while in reality, it is extremely complex; perhaps more complex than Windows or iOS development. That is because unlike developing for Mac OS, Windows, or Android, where all of your tools are documented and maintained by one company, you are trying to cobble together an application from dozens of technologies that were all written by different groups at different times.&lt;/p&gt;
+
+&lt;p&gt;That said, a full-featured web application was previously only possible for large companies with budgets that could encompass sysadmins, DBAs, front-end developers, back-end developers, testers, and senior architects to tie it all together. With Rails every one of those roles can be effectively played by the back-end developer.&lt;/p&gt;
+
+&lt;p&gt;At my first company, our team included Java developers, Javascript developers, DBAs, UI designers, Rails developers, and two senior architects. I myself was hired as a Javascript programmer, and only learned Rails when the company decided they didn&amp;#8217;t need to write any more Javascript. After we switched to an all-Rails stack, I saw a twelve-person dev team shrink to essentially one person (not me) doing 95% of the work.&lt;/p&gt;
+
+&lt;p&gt;So don&amp;#8217;t think of it as unnecessary yak-shaving &amp;#8211; understand that you are simply doing the work of up to twelve people.&lt;/p&gt;</description>
     </item>
     
     <item>
