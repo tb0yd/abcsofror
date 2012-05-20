@@ -887,7 +887,7 @@
 
 <h4 id='serverside_vs_clientside'>Server-side vs. client-side</h4>
 
-<p>The upside to ERb (and Haml) is that it&#8217;s a fully server-side technology &#8211; your users won&#8217;t need to execute the code on their browsers or even know that it exists. You have full control over who has access to the code and over the environment in which the code is executed. That generally makes it much safer, faster, and easier to implement than a comparable solution in Flash or Javascript.</p>
+<p>The upside to ERb (and Haml) is that it&#8217;s a fully server-side technology &#8211; your users won&#8217;t need to execute the code on their browsers or even know that it exists. You have full control over who has access to the code and over the environment in which the code is executed. That generally makes it much safer, faster, and easier to implement than a comparable solution in Flash or AJAX.</p>
 
 <p>The downside is that you will be serving different data from the same URL, so it will be harder to take advantage of HTTP&#8217;s built-in caching mechanisms. It also becomes more difficult to track exactly which content is being shown to which users. User experience is also affected as the user must reload the page to see changes in dynamic data. So, many Rails developers choose to display dynamic data with AJAX to address these problems.</p>
 
