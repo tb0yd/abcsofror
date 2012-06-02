@@ -6,9 +6,85 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Thu, 31 May 2012 15:41:43 -0400</pubDate>
-    <lastBuildDate>Thu, 31 May 2012 15:41:43 -0400</lastBuildDate>
+    <pubDate>Sat, 02 Jun 2012 16:15:11 -0400</pubDate>
+    <lastBuildDate>Sat, 02 Jun 2012 16:15:11 -0400</lastBuildDate>
 
+    
+    <item>
+      <title>F is for functional programming</title>
+      <link>http://coyled.comf.html</link>
+      <pubDate>Sat, 02 Jun 2012 00:00:00 -0400</pubDate>
+      <author>coyled@coyled.com (Dave Coyle)</author>
+      <guid>http://coyled.com./f</guid>
+      <description>&lt;h4 id='languages_and_paradigms'&gt;Languages and paradigms&lt;/h4&gt;
+
+&lt;p&gt;The Ruby language supports multiple &lt;em&gt;programming paradigms&lt;/em&gt;, or programming styles, and functional programming is one of them.&lt;/p&gt;
+
+&lt;p&gt;Like other paradigms (such as object-oriented programming), there are advanced users and there are beginners. But since this style of programming is so widely used in the Ruby community, it&amp;#8217;s important for anyone learning Rails to know the basics.&lt;/p&gt;
+
+&lt;h4 id='blocks'&gt;Blocks&lt;/h4&gt;
+
+&lt;p&gt;Here&amp;#8217;s some Ruby code that generates HTML for comments on a post:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;each&lt;/span&gt; &lt;span class='k'&gt;do&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+      &lt;span class='n'&gt;result&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;p&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;/p&amp;gt;&amp;quot;&lt;/span&gt;
+      &lt;span class='n'&gt;result&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;hr /&amp;gt;&amp;quot;&lt;/span&gt;
+    &lt;span class='k'&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;and stores it in the &amp;#8220;result&amp;#8221; variable.&lt;/p&gt;
+
+&lt;p&gt;The code above uses the Array#each method, which takes a &lt;em&gt;block&lt;/em&gt;. A block is a chunk of Ruby code that appears between &amp;#8220;do&amp;#8221; and &amp;#8220;end,&amp;#8221; or is surrounded by curly braces:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;each&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+      &lt;span class='n'&gt;result&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;p&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;/p&amp;gt;&amp;quot;&lt;/span&gt;
+      &lt;span class='n'&gt;result&lt;/span&gt; &lt;span class='o'&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;hr /&amp;gt;&amp;quot;&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;A block can itself take an argument, as in this example with the &amp;#8220;comment&amp;#8221; argument.&lt;/p&gt;
+
+&lt;h4 id='more_array_methods'&gt;More array methods&lt;/h4&gt;
+
+&lt;p&gt;Array#each is only one of several core Ruby methods that take blocks. For example, say you want to filter all comments that contain certain keywords. You can do this using Array#select:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;relevant_comments&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;select&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+      &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;split&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;include?&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;keywords&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;And if you want to clean the comments from any HTML formatting, you might do so using Array#map:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;plaintext_comments&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;map&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+      &lt;span class='n'&gt;sanitize&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;h4 id='chaining'&gt;Chaining&lt;/h4&gt;
+
+&lt;p&gt;It really gets interesting when you start chaining these methods together:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;plaintext_relevant_comments&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;select&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+      &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;split&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;include?&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;keywords&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;map&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
+      &lt;span class='n'&gt;sanitize&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;h4 id='other_languages'&gt;Other languages&lt;/h4&gt;
+
+&lt;p&gt;Functional programming can be used in other languages as well. For example, many of these methods are available in Javascript with Jeremy Ashkenas&amp;#8217; &lt;strong&gt;underscore.js&lt;/strong&gt; (which in turn borrows from Oliver Steele&amp;#8217;s &lt;strong&gt;Functional&lt;/strong&gt;):&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='js'&gt;    &lt;span class='nx'&gt;_&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;post&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;comments&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;each&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;comment&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+      &lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;p&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nx'&gt;comment&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;body&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;lt;/p&amp;gt;&amp;lt;hr /&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+    &lt;span class='p'&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>E is for ERb</title>

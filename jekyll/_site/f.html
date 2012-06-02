@@ -115,7 +115,7 @@
 				margin-left: 5px;
 			}
 		</style>
-		<title>The ABCs of RoR: A simple introduction to using Rails</title>
+		<title>The ABCs of RoR: F is for functional programming</title>
 		<link rel="shortcut icon" href="favicon.ico" />
 		<script>
 			$(function() {
@@ -729,214 +729,98 @@
 				<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
 
 				<hr />
-<div class="selection">
-	<a href="a.html">
-	<h2>A is for ActiveRecord</h2>
-
-	<h6>Get an overview of the ORM framework that makes Rails Rails.</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="b.html">
-
-	<h2>B is for browsers</h2>
-
-	<h6>Every user's window to your work</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="c.html">
-
-	<h2>C is for cross-site request forgery</h2>
-
-	<h6>It's 2AM. Do you know where your cookies are?</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="d.html">
-	<h2>D is for databases</h2>
-
-	<h6>Your app's most important external dependency</h6>
-</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<a href="e.html">
-	<h2>E is for ERb</h2>
-
-	<h6>Ruby-flavored HTML</h6>
-</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<a href="f.html">
+<div class="letter">
 	<h2>F is for functional programming</h2>
+	<h6>Map, filter, and reduce your data</h2>
+</div>
+<hr />
+<h4 id='languages_and_paradigms'>Languages and paradigms</h4>
 
-	<h6>Map, filter, and reduce your data</h6>
-	</a>
+<p>The Ruby language supports multiple <em>programming paradigms</em>, or programming styles, and functional programming is one of them.</p>
+
+<p>Like other paradigms (such as object-oriented programming), there are advanced users and there are beginners. But since this style of programming is so widely used in the Ruby community, it&#8217;s important for anyone learning Rails to know the basics.</p>
+
+<h4 id='blocks'>Blocks</h4>
+
+<p>Here&#8217;s some Ruby code that generates HTML for comments on a post:</p>
+
+<p><div class='highlight'><pre><code class='ruby'>    <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span>
+      <span class='n'>result</span> <span class='o'>&lt;&lt;</span> <span class='s2'>&quot;&lt;p&gt;&quot;</span> <span class='o'>+</span> <span class='n'>comment</span><span class='o'>.</span><span class='n'>body</span> <span class='o'>+</span> <span class='s2'>&quot;&lt;/p&gt;&quot;</span>
+      <span class='n'>result</span> <span class='o'>&lt;&lt;</span> <span class='s2'>&quot;&lt;hr /&gt;&quot;</span>
+    <span class='k'>end</span>
+</code></pre>
+</div></p>
+
+<p>&#8230;and stores it in the &#8220;result&#8221; variable.</p>
+
+<p>The code above uses the Array#each method, which takes a <em>block</em>. A block is a chunk of Ruby code that appears between &#8220;do&#8221; and &#8220;end,&#8221; or is surrounded by curly braces:</p>
+
+<p><div class='highlight'><pre><code class='ruby'>    <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span>
+      <span class='n'>result</span> <span class='o'>&lt;&lt;</span> <span class='s2'>&quot;&lt;p&gt;&quot;</span> <span class='o'>+</span> <span class='n'>comment</span><span class='o'>.</span><span class='n'>body</span> <span class='o'>+</span> <span class='s2'>&quot;&lt;/p&gt;&quot;</span>
+      <span class='n'>result</span> <span class='o'>&lt;&lt;</span> <span class='s2'>&quot;&lt;hr /&gt;&quot;</span>
+    <span class='p'>}</span>
+</code></pre>
+</div></p>
+
+<p>A block can itself take an argument, as in this example with the &#8220;comment&#8221; argument.</p>
+
+<h4 id='more_array_methods'>More array methods</h4>
+
+<p>Array#each is only one of several core Ruby methods that take blocks. For example, say you want to filter all comments that contain certain keywords. You can do this using Array#select:</p>
+
+<p><div class='highlight'><pre><code class='ruby'>    <span class='n'>relevant_comments</span> <span class='o'>=</span> <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>select</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span>
+      <span class='n'>comment</span><span class='o'>.</span><span class='n'>body</span><span class='o'>.</span><span class='n'>split</span><span class='o'>.</span><span class='n'>include?</span><span class='p'>(</span><span class='n'>keywords</span><span class='p'>)</span>
+    <span class='p'>}</span>
+</code></pre>
+</div></p>
+
+<p>And if you want to clean the comments from any HTML formatting, you might do so using Array#map:</p>
+
+<p><div class='highlight'><pre><code class='ruby'>    <span class='n'>plaintext_comments</span> <span class='o'>=</span> <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>map</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span>
+      <span class='n'>sanitize</span><span class='p'>(</span><span class='n'>comment</span><span class='p'>)</span>
+    <span class='p'>}</span>
+</code></pre>
+</div></p>
+
+<h4 id='chaining'>Chaining</h4>
+
+<p>It really gets interesting when you start chaining these methods together:</p>
+
+<p><div class='highlight'><pre><code class='ruby'>    <span class='n'>plaintext_relevant_comments</span> <span class='o'>=</span> <span class='vi'>@post</span><span class='o'>.</span><span class='n'>comments</span><span class='o'>.</span><span class='n'>select</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span>
+      <span class='n'>comment</span><span class='o'>.</span><span class='n'>body</span><span class='o'>.</span><span class='n'>split</span><span class='o'>.</span><span class='n'>include?</span><span class='p'>(</span><span class='n'>keywords</span><span class='p'>)</span>
+    <span class='p'>}</span><span class='o'>.</span><span class='n'>map</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>comment</span><span class='o'>|</span>
+      <span class='n'>sanitize</span><span class='p'>(</span><span class='n'>comment</span><span class='p'>)</span>
+    <span class='p'>}</span>
+</code></pre>
+</div></p>
+
+<h4 id='other_languages'>Other languages</h4>
+
+<p>Functional programming can be used in other languages as well. For example, many of these methods are available in Javascript with Jeremy Ashkenas&#8217; <strong>underscore.js</strong> (which in turn borrows from Oliver Steele&#8217;s <strong>Functional</strong>):</p>
+<div class='highlight'><pre><code class='js'>    <span class='nx'>_</span><span class='p'>(</span><span class='nx'>post</span><span class='p'>.</span><span class='nx'>comments</span><span class='p'>).</span><span class='nx'>each</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(</span><span class='nx'>comment</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='k'>return</span> <span class='s2'>&quot;&lt;p&gt;&quot;</span> <span class='o'>+</span> <span class='nx'>comment</span><span class='p'>.</span><span class='nx'>body</span> <span class='o'>+</span> <span class='s2'>&quot;&lt;/p&gt;&lt;hr /&gt;&quot;</span><span class='p'>;</span>
+    <span class='p'>});</span>
+</code></pre>
 </div>
 
 <hr />
+<br />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'abcsofror'; // required: replace example with your forum shortname
+    var disqus_identifier = '/' + "f.html";
+    var disqus_url = 'http://www.abcsofror.com/' + "f.html";
 
-<div class="selection">
-	<h2>G is for gems</h2>
-
-	<h6>Yes, in Ruby, the main format for packaging software is the "gem". Seriously.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>H is for HTTP</h2>
-
-	<h6>The basis of all web transactions</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>I is for IRb</h2>
-
-	<h6>Meet your new best friend for debugging purposes.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>J is for Javascript</h2>
-
-	<h6>Many dense books have been written on it; why not a few more paragraphs?</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>K is for Kernel</h2>
-
-	<h6>This Ruby module will open up a whole new world of possibilities.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>L is for LAMP</h2>
-
-	<h6>Here, it should really be "LAMR," but for some reason that hasn't caught on.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>M is for Model-View-Controller</h2>
-
-	<h6>A single design pattern that fits 99% of domains, whether you like it or not.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>N is for nested forms</h2>
-
-	<h6>Read this now and save yourself years of writing complex forms the wrong way.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>O is for object-oriented programming</h2>
-
-	<h6>Every class is an object, but not every object is a class, but "Object" is a class and "class" is not an object.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>P is for performance</h2>
-	<h6>Clearing N+1s and feeling like a hero</h6>
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Q is for quality assurance</h2>
-
-	<h6>Your best friend is the one who corrects you when you make a mistake.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>R is for Ruby</h2>
-
-	<h6>Making programmers happy since 1993</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>S is for source control</h2>
-
-	<h6>Sometimes it's the only documentation you need.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>T is for text editor</h2>
-
-	<h6>Learning a good one can double your productivity.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>U is for unit tests</h2>
-
-	<h6>Write them before you code, or write them afterwards. Write them.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>V is for validation</h2>
-
-	<h6>ActiveRecord makes it easy to be as nitpicky about your data as you want.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>X is for XML</h2>
-
-	<h6>It's bulky, it's confusing, and it's everywhere. Here's how to use it in Rails.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Y is for YAML</h2>
-
-	<h6>Learn the format of the Rails configuration files.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Z is for zero</h2>
-
-	<h6>It's the number of things related to Rails that start with Z. <strong>Congratulations, you're done!</strong></h6>
-
-</div>
-<hr />
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 				<br /><br />
 				<div class="span-10 append-1 last right sep" style="text-align:right;">Made by <span class="signature">Tyler Boyd</span></div>
