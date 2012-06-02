@@ -6,8 +6,8 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Sat, 02 Jun 2012 16:15:11 -0400</pubDate>
-    <lastBuildDate>Sat, 02 Jun 2012 16:15:11 -0400</lastBuildDate>
+    <pubDate>Sat, 02 Jun 2012 16:20:25 -0400</pubDate>
+    <lastBuildDate>Sat, 02 Jun 2012 16:20:25 -0400</lastBuildDate>
 
     
     <item>
@@ -48,10 +48,10 @@
 
 &lt;h4 id='more_array_methods'&gt;More array methods&lt;/h4&gt;
 
-&lt;p&gt;Array#each is only one of several core Ruby methods that take blocks. For example, say you want to filter all comments that contain certain keywords. You can do this using Array#select:&lt;/p&gt;
+&lt;p&gt;Array#each is only one of several core Ruby methods that take blocks. For example, say you want to filter all comments that contain certain a keyword. You can do this using Array#select:&lt;/p&gt;
 
 &lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;relevant_comments&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;select&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
-      &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;split&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;include?&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;keywords&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+      &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;split&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;include?&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;keyword&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
     &lt;span class='p'&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;/p&gt;
@@ -69,7 +69,7 @@
 &lt;p&gt;It really gets interesting when you start chaining these methods together:&lt;/p&gt;
 
 &lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;    &lt;span class='n'&gt;plaintext_relevant_comments&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='vi'&gt;@post&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;comments&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;select&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
-      &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;split&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;include?&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;keywords&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+      &lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;body&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;split&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;include?&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;keyword&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
     &lt;span class='p'&gt;}&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;map&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='o'&gt;|&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='o'&gt;|&lt;/span&gt;
       &lt;span class='n'&gt;sanitize&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='n'&gt;comment&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
     &lt;span class='p'&gt;}&lt;/span&gt;
