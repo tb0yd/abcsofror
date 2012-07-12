@@ -6,8 +6,8 @@
     <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>A simple and step-wise introduction to Rails</description>
     <language>en-us</language>
-    <pubDate>Sat, 02 Jun 2012 16:20:25 -0400</pubDate>
-    <lastBuildDate>Sat, 02 Jun 2012 16:20:25 -0400</lastBuildDate>
+    <pubDate>Thu, 12 Jul 2012 10:21:50 -0400</pubDate>
+    <lastBuildDate>Thu, 12 Jul 2012 10:21:50 -0400</lastBuildDate>
 
     
     <item>
@@ -221,15 +221,11 @@
 
 &lt;h4 id='shell_shock'&gt;Shell shock&lt;/h4&gt;
 
-&lt;p&gt;Depending on your background, you may not be used to running so many commands from the shell. It may be the first time you&amp;#8217;ve ever opened a shell. You may still be trying to get &amp;#8220;rake&amp;#8221; to work on Cygwin, or trying to install the MySQL dev package on your Linux distro, or just pasting random exceptions into Google hoping that something makes your errors go away.&lt;/p&gt;
-
-&lt;p&gt;It may seem like a lot of unnecessary yak-shaving, and perhaps in some cases it is. But there are good historical reasons why this has to be.&lt;/p&gt;
-
-&lt;h4 id='from_orchestra_to_oneman_show'&gt;From orchestra to one-man show&lt;/h4&gt;
+&lt;p&gt;The shell has its own set of challenges. If you aren&amp;#8217;t used to working with the shell, you may still be trying to get &amp;#8220;rake&amp;#8221; to work on Cygwin, or trying to install the MySQL dev package on your Linux distro, or even just pasting error messages into Google and running random commands from anonymous people. For someone who&amp;#8217;s new to all this, it can be pretty aggravating.&lt;/p&gt;
 
 &lt;p&gt;At my first company, our team included Java developers, Javascript developers, DBAs, UI designers, Rails developers, and two senior architects. I myself was hired as a Javascript programmer, and only learned Rails when the company decided they didn&amp;#8217;t need to write any more Javascript. After we switched to an all-Rails stack, I saw a twelve-person dev team shrink to essentially one person (not me) doing 95% of the work.&lt;/p&gt;
 
-&lt;p&gt;So don&amp;#8217;t think of it as unnecessary yak-shaving &amp;#8211; understand that you are simply doing the work of up to twelve people.&lt;/p&gt;</description>
+&lt;p&gt;So if you find yourself asking, &amp;#8220;why can&amp;#8217;t I just write some flipping code!?&amp;#8221;, then understand that you are simply doing the work of up to twelve people.&lt;/p&gt;</description>
     </item>
     
     <item>
