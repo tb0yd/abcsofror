@@ -6,9 +6,86 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Thu, 12 Jul 2012 10:21:50 -0400</pubDate>
-    <lastBuildDate>Thu, 12 Jul 2012 10:21:50 -0400</lastBuildDate>
+    <pubDate>Thu, 23 Aug 2012 11:13:53 -0400</pubDate>
+    <lastBuildDate>Thu, 23 Aug 2012 11:13:53 -0400</lastBuildDate>
 
+    
+    <item>
+      <title>G is for gems</title>
+      <link>http://coyled.comg.html</link>
+      <pubDate>Wed, 22 Aug 2012 00:00:00 -0400</pubDate>
+      <author>coyled@coyled.com (Dave Coyle)</author>
+      <guid>http://coyled.com./g</guid>
+      <description>&lt;h4 id='theres_a_gem_for_that'&gt;There&amp;#8217;s a gem for that&lt;/h4&gt;
+
+&lt;p&gt;The Ruby community is built on the open-source philosophy. This means the Ruby developer can freely download and re-use other developers&amp;#8217; code in their own projects with no fear of legal consequences. And since the Ruby community has been around for a number of years, solutions to most common problems are already available for download in packages called &amp;#8220;gems&amp;#8221;. Rails itself is packaged and distributed as several gems.&lt;/p&gt;
+
+&lt;p&gt;Here are some examples of problems I&amp;#8217;ve had to solve in Rails apps using gems:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Admin interface: ActiveAdmin&lt;/li&gt;
+
+&lt;li&gt;Authentication: devise&lt;/li&gt;
+
+&lt;li&gt;Authorization: cancan&lt;/li&gt;
+
+&lt;li&gt;Browser testing: capybara&lt;/li&gt;
+
+&lt;li&gt;Fixture replacement: FactoryGirl&lt;/li&gt;
+
+&lt;li&gt;Javascript testing: jasmine&lt;/li&gt;
+
+&lt;li&gt;Pagination: WillPaginate&lt;/li&gt;
+
+&lt;li&gt;Versioning: PaperTrail&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These and many others can be found by browsing &lt;a href='http://www.ruby-toolbox.com'&gt;Ruby Toolbox&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id='careful_consideration'&gt;Careful consideration&lt;/h4&gt;
+
+&lt;p&gt;It can be very empowering to find out just what you can add to your project by including third-party code. However, when considering whether or not to include a gem, always ask yourself these questions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Is the gem currently being maintained?&lt;/strong&gt; The absence of an active developer supporting the gem is a big sign that it&amp;#8217;s going to cause trouble for you later on.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;How popular is the gem?&lt;/strong&gt; It may sound superficial, but lots of users means lots of testing, lots of bug reports, lots of blog posts, etc.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;How do you feel about the source code?&lt;/strong&gt; Since Ruby is an interpreted language, you can actually go read the source code of each gem yourself. How would you feel if you had to make some changes, add tests, etc.?&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;How is the gem used?&lt;/strong&gt; Sometimes gems add very little to a project other than a spiffy API. Look for specific examples in the docs for how the gem is used; does it mesh well with your code?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id='bundler'&gt;Bundler&lt;/h4&gt;
+
+&lt;p&gt;The way to include a gem in your project is very simple; just go to your project&amp;#8217;s gem file (located at ./Gemfile) and add a line like this:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;  &lt;span class='n'&gt;gem&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;sass&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;#8230;which (obviously) adds the Sass gem. If you want to require at least version 3.0.0 (without preventing future updates), you can write:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;  &lt;span class='n'&gt;gem&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;sass&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;gt;=3.0.0&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Seems like a piece of cake, but it gets more complicated when you begin developing multiple Rails projects at once, with different versions of the same gems. In addition to managing the Gemfile, Bundler also provides shell commands that come in handy from time to time. For example (taken from the &amp;#8220;bundler &amp;#8211;help&amp;#8221; output):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;bundle show &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Show the source location of a particular gem in the bundle.&lt;/li&gt;
+
+&lt;li&gt;&lt;strong&gt;bundle install &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Install the gems specified by the Gemfile or Gemfile.lock.&lt;/li&gt;
+
+&lt;li&gt;&lt;strong&gt;bundle update &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Update dependencies to their latest version.&lt;/li&gt;
+
+&lt;li&gt;&lt;strong&gt;bundle open &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Open an installed gem in the editor.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>F is for functional programming</title>

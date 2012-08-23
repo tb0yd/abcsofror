@@ -8,14 +8,14 @@
 		<link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 		<style>
+			body {
+				background: url(tile.gif);
+				background-position: 0px 50%;
+			}
 			ul,ol {
 				font-size: 14px;
 				font-family: 'Arial', sans-serif;
 				padding: 6px 0 6px 26px;
-			}
-			body {
-				background: url(tile.gif);
-				background-position: 0px 50%;
 			}
 			h4 {
 				font-size: 36px;
@@ -115,7 +115,7 @@
 				margin-left: 5px;
 			}
 		</style>
-		<title>The ABCs of RoR: A simple introduction to using Rails</title>
+		<title>The ABCs of RoR: G is for gems</title>
 		<link rel="shortcut icon" href="favicon.ico" />
 		<script>
 			$(function() {
@@ -729,216 +729,99 @@
 				<h5>A simple and step-wise introduction to working with Rails written by a real developer.</h5>
 
 				<hr />
-<div class="selection">
-	<a href="a.html">
-	<h2>A is for ActiveRecord</h2>
-
-	<h6>Get an overview of the ORM framework that makes Rails Rails.</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="b.html">
-
-	<h2>B is for browsers</h2>
-
-	<h6>Every user's window to your work</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="c.html">
-
-	<h2>C is for cross-site request forgery</h2>
-
-	<h6>It's 2AM. Do you know where your cookies are?</h6>
-</a>
-</div>
-
-<hr />
-<div class="selection">
-	<a href="d.html">
-	<h2>D is for databases</h2>
-
-	<h6>Your app's most important external dependency</h6>
-</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<a href="e.html">
-	<h2>E is for ERb</h2>
-
-	<h6>Ruby-flavored HTML</h6>
-</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<a href="f.html">
-	<h2>F is for functional programming</h2>
-
-	<h6>Map, filter, and reduce your data</h6>
-	</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<a href="g.html">
+<div class="letter">
 	<h2>G is for gems</h2>
-
-	<h6>Yes, in Ruby, the main format for packaging software is the "gem". Seriously.</h6>
-	</a>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>H is for HTTP</h2>
-
-	<h6>The basis of all web transactions</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>I is for IRb</h2>
-
-	<h6>Meet your new best friend for debugging purposes.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>J is for Javascript</h2>
-
-	<h6>Many dense books have been written on it; why not a few more paragraphs?</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>K is for Kernel</h2>
-
-	<h6>This Ruby module will open up a whole new world of possibilities.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>L is for LAMP</h2>
-
-	<h6>Here, it should really be "LAMR," but for some reason that hasn't caught on.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>M is for Model-View-Controller</h2>
-
-	<h6>A single design pattern that fits 99% of domains, whether you like it or not.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>N is for nested forms</h2>
-
-	<h6>Read this now and save yourself years of writing complex forms the wrong way.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>O is for object-oriented programming</h2>
-
-	<h6>Every class is an object, but not every object is a class, but "Object" is a class and "class" is not an object.</h6>
-</div>
-
-<hr />
-
-<div class="selection">
-	<h2>P is for performance</h2>
-	<h6>Clearing N+1s and feeling like a hero</h6>
+	<h6>Yes, in Ruby, the main format for packaging software is the "gem". Seriously.</h2>
 </div>
 <hr />
+<h4 id='theres_a_gem_for_that'>There&#8217;s a gem for that</h4>
 
-<div class="selection">
-	<h2>Q is for quality assurance</h2>
+<p>The Ruby community is built on the open-source philosophy. This means the Ruby developer can freely download and re-use other developers&#8217; code in their own projects with no fear of legal consequences. And since the Ruby community has been around for a number of years, solutions to most common problems are already available for download in packages called &#8220;gems&#8221;. Rails itself is packaged and distributed as several gems.</p>
 
-	<h6>Your best friend is the one who corrects you when you make a mistake.</h6>
+<p>Here are some examples of problems I&#8217;ve had to solve in Rails apps using gems:</p>
 
+<ul>
+<li>Admin interface: ActiveAdmin</li>
+
+<li>Authentication: devise</li>
+
+<li>Authorization: cancan</li>
+
+<li>Browser testing: capybara</li>
+
+<li>Fixture replacement: FactoryGirl</li>
+
+<li>Javascript testing: jasmine</li>
+
+<li>Pagination: WillPaginate</li>
+
+<li>Versioning: PaperTrail</li>
+</ul>
+
+<p>These and many others can be found by browsing <a href='http://www.ruby-toolbox.com'>Ruby Toolbox</a>.</p>
+
+<h4 id='careful_consideration'>Careful consideration</h4>
+
+<p>It can be very empowering to find out just what you can add to your project by including third-party code. However, when considering whether or not to include a gem, always ask yourself these questions:</p>
+
+<ul>
+<li>
+<p><strong>Is the gem currently being maintained?</strong> The absence of an active developer supporting the gem is a big sign that it&#8217;s going to cause trouble for you later on.</p>
+</li>
+
+<li>
+<p><strong>How popular is the gem?</strong> It may sound superficial, but lots of users means lots of testing, lots of bug reports, lots of blog posts, etc.</p>
+</li>
+
+<li>
+<p><strong>How do you feel about the source code?</strong> Since Ruby is an interpreted language, you can actually go read the source code of each gem yourself. How would you feel if you had to make some changes, add tests, etc.?</p>
+</li>
+
+<li>
+<p><strong>How is the gem used?</strong> Sometimes gems add very little to a project other than a spiffy API. Look for specific examples in the docs for how the gem is used; does it mesh well with your code?</p>
+</li>
+</ul>
+
+<h4 id='bundler'>Bundler</h4>
+
+<p>The way to include a gem in your project is very simple; just go to your project&#8217;s gem file (located at ./Gemfile) and add a line like this:</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='n'>gem</span> <span class='s2'>&quot;sass&quot;</span>
+</code></pre>
 </div>
-<hr />
-
-<div class="selection">
-	<h2>R is for Ruby</h2>
-
-	<h6>Making programmers happy since 1993</h6>
-
+<p>&#8230;which (obviously) adds the Sass gem. If you want to require at least version 3.0.0 (without preventing future updates), you can write:</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='n'>gem</span> <span class='s2'>&quot;sass&quot;</span><span class='p'>,</span> <span class='s2'>&quot;&gt;=3.0.0&quot;</span>
+</code></pre>
 </div>
+<p>Seems like a piece of cake, but it gets more complicated when you begin developing multiple Rails projects at once, with different versions of the same gems. In addition to managing the Gemfile, Bundler also provides shell commands that come in handy from time to time. For example (taken from the &#8220;bundler &#8211;help&#8221; output):</p>
+
+<ul>
+<li><strong>bundle show <em>(gem)</em></strong>: Show the source location of a particular gem in the bundle.</li>
+
+<li><strong>bundle install <em>(gem)</em></strong>: Install the gems specified by the Gemfile or Gemfile.lock.</li>
+
+<li><strong>bundle update <em>(gem)</em></strong>: Update dependencies to their latest version.</li>
+
+<li><strong>bundle open <em>(gem)</em></strong>: Open an installed gem in the editor.</li>
+</ul>
+
 <hr />
+<br />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'abcsofror'; // required: replace example with your forum shortname
+    var disqus_identifier = '/' + "g.html";
+    var disqus_url = 'http://www.abcsofror.com/' + "g.html";
 
-<div class="selection">
-	<h2>S is for source control</h2>
-
-	<h6>Sometimes it's the only documentation you need.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>T is for text editor</h2>
-
-	<h6>Learning a good one can double your productivity.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>U is for unit tests</h2>
-
-	<h6>Write them before you code, or write them afterwards. Write them.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>V is for validation</h2>
-
-	<h6>ActiveRecord makes it easy to be as nitpicky about your data as you want.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>X is for XML</h2>
-
-	<h6>It's bulky, it's confusing, and it's everywhere. Here's how to use it in Rails.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Y is for YAML</h2>
-
-	<h6>Learn the format of the Rails configuration files.</h6>
-
-</div>
-<hr />
-
-<div class="selection">
-	<h2>Z is for zero</h2>
-
-	<h6>It's the number of things related to Rails that start with Z. <strong>Congratulations, you're done!</strong></h6>
-
-</div>
-<hr />
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 				<br /><br />
 				<div class="span-10 append-1 last right sep" style="text-align:right;">Made by <span class="signature">Tyler Boyd</span></div>
