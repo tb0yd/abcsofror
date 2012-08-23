@@ -6,8 +6,8 @@
     <atom:link href="http://coyled.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>stuff from coyled</description>
     <language>en-us</language>
-    <pubDate>Thu, 23 Aug 2012 11:13:53 -0400</pubDate>
-    <lastBuildDate>Thu, 23 Aug 2012 11:13:53 -0400</lastBuildDate>
+    <pubDate>Thu, 23 Aug 2012 11:45:57 -0400</pubDate>
+    <lastBuildDate>Thu, 23 Aug 2012 11:45:57 -0400</lastBuildDate>
 
     
     <item>
@@ -23,21 +23,21 @@
 &lt;p&gt;Here are some examples of problems I&amp;#8217;ve had to solve in Rails apps using gems:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Admin interface: ActiveAdmin&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Admin interface&lt;/strong&gt;: ActiveAdmin&lt;/li&gt;
 
-&lt;li&gt;Authentication: devise&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authentication&lt;/strong&gt;: Devise&lt;/li&gt;
 
-&lt;li&gt;Authorization: cancan&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authorization&lt;/strong&gt;: CanCan&lt;/li&gt;
 
-&lt;li&gt;Browser testing: capybara&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Browser testing&lt;/strong&gt;: Capybara&lt;/li&gt;
 
-&lt;li&gt;Fixture replacement: FactoryGirl&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixture replacement&lt;/strong&gt;: FactoryGirl&lt;/li&gt;
 
-&lt;li&gt;Javascript testing: jasmine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Javascript testing&lt;/strong&gt;: Jasmine&lt;/li&gt;
 
-&lt;li&gt;Pagination: WillPaginate&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pagination&lt;/strong&gt;: WillPaginate&lt;/li&gt;
 
-&lt;li&gt;Versioning: PaperTrail&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Versioning&lt;/strong&gt;: PaperTrail&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;These and many others can be found by browsing &lt;a href='http://www.ruby-toolbox.com'&gt;Ruby Toolbox&lt;/a&gt;.&lt;/p&gt;
@@ -74,7 +74,15 @@
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;  &lt;span class='n'&gt;gem&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;sass&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;gt;=3.0.0&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;Seems like a piece of cake, but it gets more complicated when you begin developing multiple Rails projects at once, with different versions of the same gems. In addition to managing the Gemfile, Bundler also provides shell commands that come in handy from time to time. For example (taken from the &amp;#8220;bundler &amp;#8211;help&amp;#8221; output):&lt;/p&gt;
+&lt;p&gt;Then, to install the gem, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ bundle&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If Bundler isn&amp;#8217;t installed, you may have to run the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ gem install bundler&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bundler also provides some shell commands which may help:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;bundle show &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Show the source location of a particular gem in the bundle.&lt;/li&gt;
@@ -84,7 +92,13 @@
 &lt;li&gt;&lt;strong&gt;bundle update &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Update dependencies to their latest version.&lt;/li&gt;
 
 &lt;li&gt;&lt;strong&gt;bundle open &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Open an installed gem in the editor.&lt;/li&gt;
-&lt;/ul&gt;</description>
+
+&lt;li&gt;&lt;strong&gt;bundle package &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Package the .gem files required by your application into the vendor/cache directory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above commands (and others) can be displayed by running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ bundle --help&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>

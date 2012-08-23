@@ -741,21 +741,21 @@
 <p>Here are some examples of problems I&#8217;ve had to solve in Rails apps using gems:</p>
 
 <ul>
-<li>Admin interface: ActiveAdmin</li>
+<li><strong>Admin interface</strong>: ActiveAdmin</li>
 
-<li>Authentication: devise</li>
+<li><strong>Authentication</strong>: Devise</li>
 
-<li>Authorization: cancan</li>
+<li><strong>Authorization</strong>: CanCan</li>
 
-<li>Browser testing: capybara</li>
+<li><strong>Browser testing</strong>: Capybara</li>
 
-<li>Fixture replacement: FactoryGirl</li>
+<li><strong>Fixture replacement</strong>: FactoryGirl</li>
 
-<li>Javascript testing: jasmine</li>
+<li><strong>Javascript testing</strong>: Jasmine</li>
 
-<li>Pagination: WillPaginate</li>
+<li><strong>Pagination</strong>: WillPaginate</li>
 
-<li>Versioning: PaperTrail</li>
+<li><strong>Versioning</strong>: PaperTrail</li>
 </ul>
 
 <p>These and many others can be found by browsing <a href='http://www.ruby-toolbox.com'>Ruby Toolbox</a>.</p>
@@ -792,7 +792,15 @@
 <div class='highlight'><pre><code class='ruby'>  <span class='n'>gem</span> <span class='s2'>&quot;sass&quot;</span><span class='p'>,</span> <span class='s2'>&quot;&gt;=3.0.0&quot;</span>
 </code></pre>
 </div>
-<p>Seems like a piece of cake, but it gets more complicated when you begin developing multiple Rails projects at once, with different versions of the same gems. In addition to managing the Gemfile, Bundler also provides shell commands that come in handy from time to time. For example (taken from the &#8220;bundler &#8211;help&#8221; output):</p>
+<p>Then, to install the gem, run:</p>
+
+<pre><code>$ bundle</code></pre>
+
+<p>If Bundler isn&#8217;t installed, you may have to run the following:</p>
+
+<pre><code>$ gem install bundler</code></pre>
+
+<p>Bundler also provides some shell commands which may help:</p>
 
 <ul>
 <li><strong>bundle show <em>(gem)</em></strong>: Show the source location of a particular gem in the bundle.</li>
@@ -802,7 +810,13 @@
 <li><strong>bundle update <em>(gem)</em></strong>: Update dependencies to their latest version.</li>
 
 <li><strong>bundle open <em>(gem)</em></strong>: Open an installed gem in the editor.</li>
+
+<li><strong>bundle package <em>(gem)</em></strong>: Package the .gem files required by your application into the vendor/cache directory</li>
 </ul>
+
+<p>The above commands (and others) can be displayed by running:</p>
+
+<pre><code>$ bundle --help</code></pre>
 
 <hr />
 <br />
