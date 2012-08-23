@@ -6,8 +6,8 @@
     <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>A simple and step-wise introduction to Rails</description>
     <language>en-us</language>
-    <pubDate>Thu, 23 Aug 2012 11:45:57 -0400</pubDate>
-    <lastBuildDate>Thu, 23 Aug 2012 11:45:57 -0400</lastBuildDate>
+    <pubDate>Thu, 23 Aug 2012 11:56:17 -0400</pubDate>
+    <lastBuildDate>Thu, 23 Aug 2012 11:56:17 -0400</lastBuildDate>
 
     
     <item>
@@ -74,20 +74,18 @@
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;  &lt;span class='n'&gt;gem&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;sass&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;&amp;gt;=3.0.0&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;Then, to install the gem, run:&lt;/p&gt;
+&lt;p&gt;Then, to install the Sass gem, run:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ bundle&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ bundle install&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;If Bundler isn&amp;#8217;t installed, you may have to run the following:&lt;/p&gt;
+&lt;p&gt;If &lt;a href='http://gembundler.com'&gt;Bundler&lt;/a&gt; (which is itself a gem) isn&amp;#8217;t installed, you will have to install it using the RubyGems interface:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ gem install bundler&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Bundler also provides some shell commands which may help:&lt;/p&gt;
+&lt;p&gt;Bundler also provides other shell commands which may help:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;bundle show &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Show the source location of a particular gem in the bundle.&lt;/li&gt;
-
-&lt;li&gt;&lt;strong&gt;bundle install &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Install the gems specified by the Gemfile or Gemfile.lock.&lt;/li&gt;
 
 &lt;li&gt;&lt;strong&gt;bundle update &lt;em&gt;(gem)&lt;/em&gt;&lt;/strong&gt;: Update dependencies to their latest version.&lt;/li&gt;
 
