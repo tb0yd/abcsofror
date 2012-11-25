@@ -6,9 +6,110 @@
     <atom:link href="http://abcsofror.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>A simple and step-wise introduction to Rails</description>
     <language>en-us</language>
-    <pubDate>Thu, 23 Aug 2012 11:56:17 -0400</pubDate>
-    <lastBuildDate>Thu, 23 Aug 2012 11:56:17 -0400</lastBuildDate>
+    <pubDate>Sun, 25 Nov 2012 09:55:13 -0500</pubDate>
+    <lastBuildDate>Sun, 25 Nov 2012 09:55:13 -0500</lastBuildDate>
 
+    
+    <item>
+      <title>H is for HTTP</title>
+      <link>http://abcsofror.com/h.html</link>
+      <pubDate>Thu, 22 Nov 2012 00:00:00 -0500</pubDate>
+      <author>Tyler Boyd</author>
+      <guid>http://abcsofror.com/h.html</guid>
+      <description>&lt;h4 id='web_20_or_11'&gt;Web 2.0 or 1.1?&lt;/h4&gt;
+
+&lt;p&gt;Every time I see a person get excited about building a web application, I get nervous. That&amp;#8217;s because the web is not an ideal software platform. It&amp;#8217;s not feature-rich and it&amp;#8217;s dated. So what is there to be excited about?&lt;/p&gt;
+
+&lt;p&gt;However, a person might say&amp;#8230;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;What about Flash?&amp;#8221;&lt;/li&gt;
+
+&lt;li&gt;&amp;#8220;What about Microsoft Silverlight?&amp;#8221;&lt;/li&gt;
+
+&lt;li&gt;&amp;#8220;What about HTML5?&amp;#8221;&lt;/li&gt;
+
+&lt;li&gt;&amp;#8220;What about Java?&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;#8230;and so on. &amp;#8220;Aren&amp;#8217;t these all modern, feature-rich, web-based technologies?&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;The answer to each one of these is the same. Not all users have Flash and Java installed. Not all users have the Silverlight plugin. Not all browsers have HTML5 support.&lt;/p&gt;
+
+&lt;p&gt;All of the activity in recent years has been around technologies related to the web, not the web itself. The core of the web is HTTP, and the latest version of HTTP was defined in 1999. That&amp;#8217;s HTTP 1.1 &amp;#8211; the version we all still use.&lt;/p&gt;
+
+&lt;h4 id='http_by_example'&gt;HTTP by example&lt;/h4&gt;
+
+&lt;p&gt;HTTP stands for HyperText Transfer Protocol. It is made up of &lt;strong&gt;requests&lt;/strong&gt; from clients and &lt;strong&gt;responses&lt;/strong&gt; from servers.&lt;/p&gt;
+
+&lt;p&gt;Here is a sample HTTP request:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='http'&gt;&lt;span class='nf'&gt;GET&lt;/span&gt; &lt;span class='nn'&gt;/&lt;/span&gt; &lt;span class='kr'&gt;HTTP&lt;/span&gt;&lt;span class='o'&gt;/&lt;/span&gt;&lt;span class='m'&gt;1.1&lt;/span&gt;
+&lt;span class='na'&gt;Host&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;www.abcsofror.com&lt;/span&gt;
+&lt;span class='na'&gt;Accept&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;*/*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;#8230;and a sample response:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='http'&gt;&lt;span class='kr'&gt;HTTP&lt;/span&gt;&lt;span class='o'&gt;/&lt;/span&gt;&lt;span class='m'&gt;1.1&lt;/span&gt; &lt;span class='m'&gt;200&lt;/span&gt; &lt;span class='ne'&gt;OK&lt;/span&gt;
+&lt;span class='na'&gt;Date&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;Thu, 22 Nov 2012 17:17:22 GMT&lt;/span&gt;
+&lt;span class='na'&gt;Server&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;Apache/2.2.3 (CentOS)&lt;/span&gt;
+&lt;span class='na'&gt;Last-Modified&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;Thu, 23 Aug 2012 15:47:47 GMT&lt;/span&gt;
+&lt;span class='na'&gt;ETag&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;&amp;quot;11cfe4-6c66-c7eb2ec0&amp;quot;&lt;/span&gt;
+&lt;span class='na'&gt;Accept-Ranges&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;bytes&lt;/span&gt;
+&lt;span class='na'&gt;Content-Length&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;27750&lt;/span&gt;
+&lt;span class='na'&gt;Connection&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;close&lt;/span&gt;
+&lt;span class='na'&gt;Content-Type&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='l'&gt;text/html; charset=UTF-8&lt;/span&gt;
+
+&lt;span class='nt'&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    (...the index page...)
+&lt;span class='nt'&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;In this basic example, we notice the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The exchange is done entirely in plain text.&lt;/li&gt;
+
+&lt;li&gt;The amount of data added by HTTP is very low.&lt;/li&gt;
+
+&lt;li&gt;No information about the client&amp;#8217;s identity is required.&lt;/li&gt;
+
+&lt;li&gt;The server includes a unique key (ETag) for the document and a last-modified date.&lt;/li&gt;
+
+&lt;li&gt;The server includes a three-digit status code (200 OK).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The first three points show the main advantages of HTTP. The lightweight, stateless, and open nature of HTTP makes it possible for even the smallest website to serve hundreds of visitors a day from all over the globe.&lt;/p&gt;
+
+&lt;p&gt;The last two points show useful features of HTTP: status codes and client-side caching.&lt;/p&gt;
+
+&lt;h4 id='status_codes'&gt;Status codes&lt;/h4&gt;
+
+&lt;p&gt;Some status codes are assigned automatically by Rails:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;200 (OK)&lt;/strong&gt;: &lt;em&gt;render&lt;/em&gt; was invoked.&lt;/li&gt;
+
+&lt;li&gt;&lt;strong&gt;302 (Redirect)&lt;/strong&gt;: &lt;em&gt;redirect_to&lt;/em&gt; was invoked.&lt;/li&gt;
+
+&lt;li&gt;&lt;strong&gt;304 (Not Modified)&lt;/strong&gt;: The client has already cached the content.&lt;/li&gt;
+
+&lt;li&gt;&lt;strong&gt;500 (Server Error)&lt;/strong&gt;: An exception was raised inside the application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also provide your own status code like this:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;  &lt;span class='n'&gt;render&lt;/span&gt; &lt;span class='ss'&gt;:text&lt;/span&gt; &lt;span class='o'&gt;=&amp;gt;&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;blah&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='ss'&gt;:status&lt;/span&gt; &lt;span class='o'&gt;=&amp;gt;&lt;/span&gt; &lt;span class='mi'&gt;401&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id='caching'&gt;Caching&lt;/h4&gt;
+
+&lt;p&gt;Client-side caching for static files (such as CSS and Javascript files) will be automatically handled by your web server (Apache or nginx) if those files are in the &lt;em&gt;public/&lt;/em&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;Dynamic pages can also be cached on the client-side by manually setting an expiration date in the controller:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;  &lt;span class='n'&gt;expires_in&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;day&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Server-side caching is outside the scope of this guide. Please refer to the &lt;a href='http://guides.rubyonrails.org/caching_with_rails.html'&gt;Rails documentation&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>G is for gems</title>
